@@ -50,10 +50,10 @@ const MyCarousel=()=>{
         }
     })
     return(
-        <div className="w-[60vw] h-[100vh] my-10 mx-auto ">
-          <img src={items[current]}  className="w-full h-[150vh] relative rounded-3xl shadow-black shadow-2xl" />
+        <div className="">
+          <img src={items[current]}  className=" relative rounded-3xl shadow-black shadow-2xl" />
            <button onClick={handleBack}><img src={Left} className="absolute top-[900px] w-10"/></button>
-           <button onClick={handleForw}><img src={Right}  className="absolute top-[900px] left-[1420px] w-12"/></button>
+           <button onClick={handleForw}><img src={Right}  className="absolute top-[900px] left-[1760px] w-12"/></button>
 
         </div>
     )

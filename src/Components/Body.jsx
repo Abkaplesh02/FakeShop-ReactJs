@@ -9,8 +9,6 @@ const Body=()=>{
             <Header/>
             <MyCarousel/>
             <CardContainer/>
-
-            
         </div>
     )
 }
