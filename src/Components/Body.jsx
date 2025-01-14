@@ -1,7 +1,13 @@
+import Header from "./Header";
+
+import MyCarousel from "./MyCarousel";
+
 const Body=()=>{
     return(
         <div>
-            Hello
+            <Header/>
+            <MyCarousel/>
+            
         </div>
     )
 }
