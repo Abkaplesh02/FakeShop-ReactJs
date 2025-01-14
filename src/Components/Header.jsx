@@ -23,7 +23,7 @@ const Header=()=>{
 
     const list=["MEN","WOMEN","KIDS","HOME & LIVING","BEAUTY",]
     return(
-        <div className='flex justify-between pl-14 items-center pr-8 py-5 shadow-2xl sticky relative' >
+        <div className='flex justify-between pl-14 items-center pr-8 py-5 shadow-2xl sticky relative z-10'>
             <div className='w-1/12 mr-[-50px]'>
             <img src={MyLogo} className='w-[70%] cursor-pointer'/>
             </div>

@@ -1,3 +1,4 @@
+import CardContainer from "./CardContainer";
 import Header from "./Header";
 
 import MyCarousel from "./MyCarousel";
@@ -7,6 +8,8 @@ const Body=()=>{
         <div>
             <Header/>
             <MyCarousel/>
+            <CardContainer/>
+
             
         </div>
     )

@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import MyPic1 from "../assets/1.png"
 import MyPic2 from "../assets/2.png"
 import MyPic3 from "../assets/3.png"
@@ -13,33 +13,47 @@ const items=[MyPic6,MyPic2,MyPic3,MyPic4,MyPic5,MyPic1];
 const MyCarousel=()=>{
 
 
+    const [current,setCurrent]=useState(0);
     const handleBack=()=>{
-        setCurrent(current=>current-1);
-        console.log(current);
-        if(current<0){
+
+        if(current==0){
             setCurrent(items.length-1);
         }
-        console.log("afer updateing" + current)
+        else{
+            setCurrent(current-1);
+        }
     }
 
     const handleForw=()=>{
-        setCurrent(current=>current+1);
+        
         if(current==items.length-1){
             setCurrent(0)
+        }else{
+            setCurrent(current+1);
         }
         console.log(current)
     }
 
-    const [current,setCurrent]=useState(0);
 
-    setTimeout(()=>{
+    useEffect(()=>{
 
+        const interval=setTimeout(()=>{
+            setCurrent(current=>current+1);
+            if(current==items.length-1){
+                setCurrent(0)
+            }
+        },10000)
+
+
+        return()=>{
+            clearTimeout(interval);
+        }
     })
     return(
-        <div className="w-[60vw]  my-10 mx-auto ">
-          <img src={items[current]}  className="w-full relative" />
-           <button onClick={handleBack}><img src={Left} className="absolute top-[820px] w-10"/></button>
-           <button onClick={handleForw}><img src={Right}  className="absolute top-[820px] left-[1430px] w-10"/></button>
+        <div className="w-[60vw] h-[100vh] my-10 mx-auto ">
+          <img src={items[current]}  className="w-full h-[150vh] relative rounded-3xl shadow-black shadow-2xl" />
+           <button onClick={handleBack}><img src={Left} className="absolute top-[900px] w-10"/></button>
+           <button onClick={handleForw}><img src={Right}  className="absolute top-[900px] left-[1420px] w-12"/></button>
 
         </div>
     )
