@@ -7,7 +7,7 @@ const WomenList=()=>{
     const Gadgets=["Smart Wearables","Headphones","Speakers","Mobile Cases","Power Banks","Laptop Bags","Backpacks","Travel Accessories"];
     const Jwellery=["Earrings","Rings","Necklaces","Bracelets","Bangles","Anklets","Mangalsutras","Pendants","Jewellery Sets","Nose Rings","Toe Rings","Hair Accessories","Brooches","Saree Pins"];
     return(
-        <div className="w-6/12 flex justify-between absolute top-[133px] left-[170px] bg-white p-8 shadow-2xl ">
+        <div className="w-6/12 flex justify-between absolute top-[120px] left-[170px] bg-white p-8 shadow-2xl ">
             
 
             <div>

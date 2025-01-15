@@ -5,11 +5,12 @@ import MyPic3 from "../assets/3.png"
 import MyPic4 from "../assets/4.png"
 import MyPic5 from "../assets/5.png"
 import MyPic6 from "../assets/6.png"
+import MyPic7 from "../assets/women.png"
 import Left from "../assets/left.png"
 import Right from "../assets/right.png"
 
 
-const items=[MyPic6,MyPic2,MyPic3,MyPic4,MyPic5,MyPic1];
+const items=[MyPic7,MyPic6,MyPic2,MyPic3,MyPic4,MyPic5,MyPic1];
 const MyCarousel=()=>{
 
 
@@ -50,7 +51,7 @@ const MyCarousel=()=>{
         }
     })
     return(
-        <div className="">
+        <div className="relative top-[130px]">
           <img src={items[current]}  className=" relative rounded-3xl shadow-black shadow-2xl" />
            <button onClick={handleBack}><img src={Left} className="absolute top-[900px] w-10"/></button>
            <button onClick={handleForw}><img src={Right}  className="absolute top-[900px] left-[1760px] w-12"/></button>
