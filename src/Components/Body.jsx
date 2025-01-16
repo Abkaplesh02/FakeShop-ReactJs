@@ -1,16 +1,21 @@
-import CardContainer from "./CardContainer";
-import Footerlist from "./Footerlist";
-import Header from "./Header";
+import CardContainer from "./Cards/CardContainer";
+import Categories from "./MainPageCarousel/Categories";
+import Footerlist from "./Footer/Footerlist";
+import Header from "./Header/Header";
+import MyCarousel from "./MainPageCarousel/MyCarousel";
+import ShowMore from "./Categories/ShowMore";
 
-import MyCarousel from "./MyCarousel";
 
 const Body=()=>{
     return(
         <div>
             <Header/>
             <MyCarousel/>
+            <Categories/>
             <CardContainer/>
             <Footerlist/>
+
+            <ShowMore/>
         </div>
     )
 }

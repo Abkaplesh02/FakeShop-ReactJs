@@ -1,15 +1,15 @@
-import MyLogo from '../assets/fakeShop.png';
-import MyPerson from '../assets/person.png';
-import MyWish from '../assets/paper.png'
-import MyCart from '../assets/add-to-cart.png'
-import MySearch from '../assets/search.png'
+import MyLogo from '../../assets/fakeShop.png';
+import MyPerson from '../../assets/person.png';
+import MyWish from '../../assets/paper.png'
+import MyCart from '../../assets/add-to-cart.png'
+import MySearch from '../../assets/search.png'
 import { useState } from 'react';
-import MenList from './HeaderLists/MenList';
-import WomenList from './HeaderLists/WomenList';
-import KidsList from './HeaderLists/KidsList';
-import HomeLiving from './HeaderLists/HomeLiving';
-import BeautyList from './HeaderLists/BeautyList';
-import Studio from './HeaderLists/Studio';
+import MenList from '../HeaderLists/MenList';
+import WomenList from '../HeaderLists/WomenList';
+import KidsList from '../HeaderLists/KidsList';
+import HomeLiving from '../HeaderLists/HomeLiving';
+import BeautyList from '../HeaderLists/BeautyList';
+import Studio from '../HeaderLists/Studio';
 
 const Header=()=>{
 
@@ -30,19 +30,21 @@ const Header=()=>{
 
             <ul className='flex justify-between w-4/12 '>
                <li className='text-sm text-[#282c3f] font-bold font-sans cursor-pointer border-b-[5px] border-transparent  hover:border-b-[5px] hover:border-blue-900 ' onMouseEnter={()=>setMenState(true)}  onMouseLeave={()=>setMenState(false)}>MEN</li>
-               <li className='text-sm text-[#282c3f] font-bold font-sans cursor-pointer border-b-[5px] border-transparent  hover:border-b-[5px] hover:border-[#ee5f73]' onMouseEnter={()=>setWomenState(true)}  onMouseLeave={()=>setWomenState(false)}>WOMEN</li>
+               <li className='text-sm text-[#282c3f] font-bold font-sans cursor-pointer border-b-[5px] border-transparent  hover:border-b-[5px] hover:border-[#ee5f73]' onMouseEnter={()=>setWomenState(true)}  onMouseLeave={()=>setWomenState(false)}>WOMEN 
+
+               </li>
                <li className='text-sm text-[#282c3f] font-bold font-sans cursor-pointer border-b-[5px] border-transparent  hover:border-b-[5px] hover:border-orange-600' onMouseEnter={()=>setKidsState(true)}  onMouseLeave={()=>setKidsState(false)}>KIDS</li>
                <li className='text-sm text-[#282c3f] font-bold font-sans cursor-pointer border-b-[5px] border-transparent  hover:border-b-[5px] hover:border-yellow-600' onMouseEnter={()=>setHomeState(true)}  onMouseLeave={()=>setHomeState(false)}>HOME & LIVING</li>
                <li className='text-sm text-[#282c3f] font-bold font-sans cursor-pointer border-b-[5px] border-transparent  hover:border-b-[5px] hover:border-green-800' onMouseEnter={()=>setBeautyState(true)}  onMouseLeave={()=>setBeautyState(false)}>BEAUTY</li>
                 <li className='text-sm text-[#282c3f] font-bold font-sans cursor-pointer border-b-[5px] border-transparent hover:border-b-[5px] hover:border-[#ff3f6c]' onMouseEnter={(item)=>setStudioState(true)} onMouseLeave={()=>setStudioState(false)}>STUDIO <sup className='text-[#ff3f6c]'>  NEW</sup></li>
             </ul>
 
-            {menState && <MenList/>}
-            {womenState && <WomenList/>}
-            {kidsState && <KidsList/>}
-            {homeState && <HomeLiving/>}
-            {beautyState && <BeautyList/>}
-            {studioState && <Studio/>}
+            {menState && <MenList setMenState={setMenState}/>}
+            {womenState && <WomenList setWomenState={setWomenState}/>}
+            {kidsState && <KidsList setKidsState={setKidsState}/>}
+            {homeState && <HomeLiving setHomeState={setHomeState}/>}
+            {beautyState && <BeautyList setBeautyState={setBeautyState}/>}
+            {studioState && <Studio setStudioState={setStudioState}/>}
 
 
 

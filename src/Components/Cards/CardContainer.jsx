@@ -1,10 +1,11 @@
 import axios from "axios";
-import MyCard from "./MyCard";
+import MyCard from "../Cards/MyCard";
 import { useEffect, useState } from "react";
+import ContainerShimmer from "../Shimmer/ContainerShimmer";
 
 const CardContainer=()=>{
 
-    const [data,setData]=useState([]);
+    const [data,setData]=useState(null);
 
     useEffect(()=>{
     axios
@@ -14,8 +15,10 @@ const CardContainer=()=>{
     })
     },[]);
 
-
-    
+    if(data==null){
+        return <ContainerShimmer/>
+    }
+    else{
     return(
         <div className="mt-40 flex flex-wrap ">
 
@@ -26,5 +29,6 @@ const CardContainer=()=>{
         </div>
     )
 }
-
+}
+    
 export default CardContainer;

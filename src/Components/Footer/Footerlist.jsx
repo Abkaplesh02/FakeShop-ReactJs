@@ -1,4 +1,4 @@
-import MyFooter from "../assets/Footer.png"
+import MyFooter from "../../assets/Footer.png"
 import FooterComponent from "./FooterComponent";
 const Footerlist=()=>{
     return(

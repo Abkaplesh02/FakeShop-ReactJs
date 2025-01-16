@@ -1,4 +1,4 @@
-const BeautyList=()=>{
+const BeautyList=({setBeautyState})=>{
 
     const Makeup=["Face","Eyes","Lips","Nails","Makeup Kits","Makeup Accessories","Face","Eyes","Lips","Nails","Makeup Kits","Makeup Accessories"];
     const Skincare=["Face Moisturisers","Face Cleansers","Face Makeup Removers","Face Cleansing Brushes","Face Sheet Masks","Face Eye Creams","Face Lip Balms"];
@@ -14,14 +14,14 @@ const BeautyList=()=>{
     return(
 
 
-        <div className="w-6/12 flex justify-between absolute top-[120px] left-[170px] bg-white p-8 shadow-2xl ">
+        <div onMouseEnter={()=>setBeautyState(true)} onMouseLeave={()=>setBeautyState(false)} className="w-6/12 flex justify-between absolute top-[80px] left-[170px] bg-white p-8 shadow-2xl ">
             
 
         <div>
-            <ul className=" my-4 pb-4" >
+            <ul className=" my-4 pb-4 w-[135px]" >
                 <li><h1 className="text-green-800 text-[0.9rem] text-[0.9rem]">Makeup</h1></li>
                 {
-                    Makeup.map((item,index)=>(<li className='text-sm my-1 text-gray-500 font-sans cursor-pointer' key={index}>{item}</li>))
+                    Makeup.map((item,index)=>(<li className='text-sm my-1 text-gray-500 font-sans cursor-pointer  hover:text-green-800 hover:font-semibold' key={index}>{item}</li>))
                 }
             </ul>
         </div>
@@ -29,25 +29,25 @@ const BeautyList=()=>{
 
         <div>
 
-        <ul className="my-4 pb-4 border-b-2 border-gray-300">
-                <li><h1 className="text-green-800 text-[0.9rem] text-[0.9rem]">Skincare, Bath & Body</h1></li>
+        <ul className="my-4 pb-4 border-b-2 border-gray-300 w-[135px]">
+                <li><h1 className="text-green-800  text-[0.9rem]">Skincare, Bath & Body</h1></li>
                 {
-                    Skincare.map((item,index)=>(<li className='text-sm my-1 text-gray-500 font-sans cursor-pointer' key={index}>{item}</li>))
+                    Skincare.map((item,index)=>(<li className='text-sm my-1 text-gray-500 font-sans cursor-pointer  hover:text-green-800 hover:font-semibold' key={index}>{item}</li>))
                 }
             </ul>
 
             <ul className="my-4 pb-4">
-                <li><h1 className="text-green-800 text-[0.9rem] text-[0.9rem]">Baby Care</h1></li>
-                <li><h1 className="text-green-800 text-[0.9rem] text-[0.9rem]">Masks</h1></li>
+                <li><h1 className="text-green-800  text-[0.9rem]">Baby Care</h1></li>
+                <li><h1 className="text-green-800  text-[0.9rem]">Masks</h1></li>
             </ul>
         </div>
 
 
         <div>
-        <ul className="border-b-2 border-gray-300 my-4 pb-4">
+        <ul className="border-b-2 border-gray-300 my-4 pb-4 w-[135px]">
                 <li><h1 className="text-green-800 text-[0.9rem]">Haircare</h1></li>
                 {
-                    Haircare.map((item,index)=>(<li className='text-sm my-1 text-gray-500 font-sans cursor-pointer' key={index}>{item}</li>))
+                    Haircare.map((item,index)=>(<li className='text-sm my-1 text-gray-500 font-sans cursor-pointer  hover:text-green-800 hover:font-semibold' key={index}>{item}</li>))
                 }
             </ul>
 
@@ -55,7 +55,7 @@ const BeautyList=()=>{
             <ul className=" my-4 pb-4">
                 <li><h1 className="text-green-800 text-[0.9rem]">Fragrance</h1></li>
                 {
-                    Fragrances.map((item,index)=>(<li className='text-sm my-1 text-gray-500 font-sans cursor-pointer' key={index}>{item}</li>))
+                    Fragrances.map((item,index)=>(<li className='text-sm my-1 text-gray-500 font-sans cursor-pointer  hover:text-green-800 hover:font-semibold' key={index}>{item}</li>))
                 }
             </ul>
 
@@ -64,10 +64,10 @@ const BeautyList=()=>{
 
         <div>
 
-        <ul className="border-b-2 border-gray-300 my-4 pb-4">
+        <ul className="border-b-2 border-gray-300 my-4 pb-4 w-[135px]">
                 <li><h1 className="text-green-800 text-[0.9rem]">Appliances</h1></li>
                 {
-                    Appliances.map((item,index)=>(<li className='text-sm my-1 text-gray-500 font-sans cursor-pointer' key={index}>{item}</li>))
+                    Appliances.map((item,index)=>(<li className='text-sm my-1 text-gray-500 font-sans cursor-pointer  hover:text-green-800 hover:font-semibold' key={index}>{item}</li>))
                 }
                 
             </ul>
@@ -75,7 +75,7 @@ const BeautyList=()=>{
             <ul className="border-b-2 border-gray-300 my-4 pb-4">
                 <li><h1 className="text-green-800 text-[0.9rem]">Men's Grooming</h1></li>
                 {
-                    MenGroom.map((item,index)=>(<li className='text-sm my-1 text-gray-500 font-sans cursor-pointer' key={index}>{item}</li>))
+                    MenGroom.map((item,index)=>(<li className='text-sm my-1 text-gray-500 font-sans cursor-pointer  hover:text-green-800 hover:font-semibold' key={index}>{item}</li>))
                 }
                
             </ul>
@@ -84,7 +84,7 @@ const BeautyList=()=>{
             <ul>
                 <li><h1 className="text-green-800 text-[0.9rem]">Beauty gift & Makeup set</h1></li>
                 {
-                    BeautyGift.map((item,index)=>(<li className='text-sm my-1 text-gray-500 font-sans cursor-pointer' key={index}>{item}</li>))
+                    BeautyGift.map((item,index)=>(<li className='text-sm my-1 text-gray-500 font-sans cursor-pointer  hover:text-green-800 hover:font-semibold' key={index}>{item}</li>))
                 }
                
             </ul>
@@ -96,10 +96,10 @@ const BeautyList=()=>{
 
         <div>
 
-        <ul className=" my-4 pb-4 ">
+        <ul className=" my-4 pb-4 w-[135px]">
                 <li><h1 className="text-green-800 text-[0.9rem]">Top Brands</h1></li>
                 {
-                TopBrands.map((item,index)=>(<li className='text-sm my-1 text-gray-500 font-sans cursor-pointer' key={index}>{item}</li>))
+                TopBrands.map((item,index)=>(<li className='text-sm my-1 text-gray-500 font-sans cursor-pointer  hover:text-green-800 hover:font-semibold' key={index}>{item}</li>))
                 }
             </ul>
 

@@ -1,23 +1,23 @@
-const KidsList=()=>{
+const KidsList=({setKidsState})=>{
 
     const BoysClothing=["T-Shirts","Shirts","Shorts","Jeans","Trousers","Clothing","Dresses & Skirts","Tops & T-Shirts","Clothing","Shorts & Capris"];
     const GirlsClothing=["Dresses & Skirts","Tops & T-Shirts","Clothing","Shorts & Capris","Jeans & Trousers","Clothing","Dresses & Skirts","Tops & T-Shirts","Clothing","Shorts & Capris" ];
     const Footwear=["Sports Shoes","Casual Shoes","Sandals","Flip Flops","School Shoes","Footwear"];
-    const Toys=["Soft Toys","Dolls","Remote Control Toys"];
+    const Toys=["Soft Toys","Dolls","Remote"];
     const Infants=["Clothing","Footwear","Toys","Baby Care","Infants"];
-    const KidsAccessories=["Watches","Bags & Backpacks","Sunglasses","Belts & Wallets","Caps & Hats","Jewellery"];
+    const KidsAccessories=["Watches","Bags","Sunglasses","Belts & Wallets","Caps & Hats","Jewellery"];
     const Brands=["UCB","US Polo Assn","Tommy Hilfiger","Pantaloons"];
 
 
     return(
-        <div className="w-6/12 flex justify-between absolute top-[120px] left-[170px] bg-white p-8 shadow-2xl ">
+        <div onMouseEnter={()=>setKidsState(true)} onMouseLeave={()=>setKidsState(false)} className="w-6/12 flex justify-between absolute top-[80px] left-[170px] bg-white p-8 shadow-2xl ">
             
 
         <div>
-            <ul className=" my-4 pb-4">
-                <li><h1 className="text-orange-600 text-[0.9rem] text-[0.9rem]">Boys Clothing</h1></li>
+            <ul className=" my-4 pb-4 w-[135px]">
+                <li><h1 className="text-orange-600  text-[0.9rem]">Boys Clothing</h1></li>
                 {
-                    BoysClothing.map((item,index)=>(<li className='text-sm my-1 text-gray-500 font-sans cursor-pointer' key={index}>{item}</li>))
+                    BoysClothing.map((item,index)=>(<li className='text-sm my-1 text-gray-500 font-sans cursor-pointer hover:text-orange-600 hover:font-semibold' key={index}>{item}</li>))
                 }
             </ul>
         </div>
@@ -25,10 +25,10 @@ const KidsList=()=>{
 
         <div>
 
-        <ul className="my-4 pb-4">
-                <li><h1 className="text-orange-600 text-[0.9rem] text-[0.9rem]">Girls Clothing</h1></li>
+        <ul className="my-4 pb-4 w-[115px]">
+                <li><h1 className="text-orange-600 text-[0.9rem]">Girls Clothing</h1></li>
                 {
-                    GirlsClothing.map((item,index)=>(<li className='text-sm my-1 text-gray-500 font-sans cursor-pointer' key={index}>{item}</li>))
+                    GirlsClothing.map((item,index)=>(<li className='text-sm my-1 text-gray-500 font-sans cursor-pointer  hover:text-orange-600 hover:font-semibold' key={index}>{item}</li>))
                 }
             </ul>
         </div>
@@ -38,7 +38,7 @@ const KidsList=()=>{
         <ul className="border-b-2 border-gray-300 my-4 pb-4">
                 <li><h1 className="text-orange-600 text-[0.9rem]">Footwear</h1></li>
                 {
-                    Footwear.map((item,index)=>(<li className='text-sm my-1 text-gray-500 font-sans cursor-pointer' key={index}>{item}</li>))
+                    Footwear.map((item,index)=>(<li className='text-sm my-1 text-gray-500 font-sans cursor-pointer  hover:text-orange-600 hover:font-semibold' key={index}>{item}</li>))
                 }
             </ul>
 
@@ -46,7 +46,7 @@ const KidsList=()=>{
             <ul className=" my-4 pb-4">
                 <li><h1 className="text-orange-600 text-[0.9rem]">Toys & Games</h1></li>
                 {
-                    Toys.map((item,index)=>(<li className='text-sm my-1 text-gray-500 font-sans cursor-pointer' key={index}>{item}</li>))
+                    Toys.map((item,index)=>(<li className='text-sm my-1 text-gray-500 font-sans cursor-pointer  hover:text-orange-600 hover:font-semibold' key={index}>{item}</li>))
                 }
             </ul>
 
@@ -59,7 +59,7 @@ const KidsList=()=>{
         <ul className="border-b-2 border-gray-300 my-4 pb-4">
                 <li><h1 className="text-orange-600 text-[0.9rem]">Infants</h1></li>
                 {
-                    Infants.map((item,index)=>(<li className='text-sm my-1 text-gray-500 font-sans cursor-pointer' key={index}>{item}</li>))
+                    Infants.map((item,index)=>(<li className='text-sm my-1 text-gray-500 font-sans cursor-pointer  hover:text-orange-600 hover:font-semibold' key={index}>{item}</li>))
                 }
             </ul>
 
@@ -78,14 +78,14 @@ const KidsList=()=>{
         <ul className="border-b-2 border-gray-300 my-4 pb-4 ">
                 <li><h1 className="text-orange-600 text-[0.9rem]">Kids Accessories</h1></li>
                 {
-                KidsAccessories.map((item,index)=>(<li className='text-sm my-1 text-gray-500 font-sans cursor-pointer' key={index}>{item}</li>))
+                KidsAccessories.map((item,index)=>(<li className='text-sm my-1 text-gray-500 font-sans cursor-pointer  hover:text-orange-600 hover:font-semibold' key={index}>{item}</li>))
                 }
             </ul>
 
             <ul className=" my-4 pb-4 ">
                 <li><h1 className="text-orange-600 text-[0.9rem]">Brands</h1></li>
                 {
-                Brands.map((item,index)=>(<li className='text-sm my-1 text-gray-500 font-sans cursor-pointer' key={index}>{item}</li>))
+                Brands.map((item,index)=>(<li className='text-sm my-1 text-gray-500 font-sans cursor-pointer  hover:text-orange-600 hover:font-semibold' key={index}>{item}</li>))
                 }
             </ul>
             
