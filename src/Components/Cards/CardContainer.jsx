@@ -9,7 +9,7 @@ const CardContainer=()=>{
 
     useEffect(()=>{
     axios
-    .get("https://fakestoreapi.com/products?limit=6")
+    .get("https://fakestoreapi.com/products")
     .then((response)=>{
         setData(response.data)
     })

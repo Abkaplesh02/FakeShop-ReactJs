@@ -83,42 +83,6 @@ const userReview=
       "rating": 4,
       "review": "Good quality and fast shipping.",
       "date": "2025-01-02"
-    },
-    {
-      "username": "matt_c",
-      "rating": 1,
-      "review": "The product doesn't work at all. Waste of money.",
-      "date": "2025-01-01"
-    },
-    {
-      "username": "olivia_p",
-      "rating": 5,
-      "review": "Highly recommend! Fantastic product.",
-      "date": "2024-12-31"
-    },
-    {
-      "username": "james_h",
-      "rating": 3,
-      "review": "The product is okay, but not as great as advertised.",
-      "date": "2024-12-30"
-    },
-    {
-      "username": "karen_f",
-      "rating": 4,
-      "review": "Very good product. Meets my expectations.",
-      "date": "2024-12-29"
-    },
-    {
-      "username": "peter_r",
-      "rating": 2,
-      "review": "The product is overpriced for what it offers.",
-      "date": "2024-12-28"
-    },
-    {
-      "username": "lucy_j",
-      "rating": 5,
-      "review": "Perfect in every way! Will buy again.",
-      "date": "2024-12-27"
     }
   ]
 ;

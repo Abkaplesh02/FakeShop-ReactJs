@@ -9,11 +9,11 @@ import ShowMore from "./Categories/ShowMore";
 const Body=()=>{
     return(
         <div>
-            <Header/>
+            {/* <Header/>
             <MyCarousel/>
             <Categories/>
             <CardContainer/>
-            <Footerlist/>
+            <Footerlist/> */}
 
             <ShowMore/>
         </div>
