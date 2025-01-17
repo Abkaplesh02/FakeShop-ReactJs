@@ -14,7 +14,7 @@ const Comment=({data,item})=>{
     <div className="w-9/12 pt-2">
         <div className="flex justify-between "> 
         <p className="text-[1rem] my-2">{username}</p>
-        <button className="bg-green-500 rounded-lg  text-[0.8rem] px-2 py-0 font-bold  text-white">{rating}⭐️ |  80</button>
+        <button className={` ${rating>=4 ? 'bg-green-500' : 'bg-orange-600 text-white'} rounded-lg  text-[0.8rem] px-2 py-0 font-bold  text-white1`}>{rating}⭐️ |  80</button>
         </div>
         <p className="text-sm font-normal mb-2" >{review}</p>
         <div className="w-full flex justify-end mt-4"><p className="text-sm text-gray-600 font-bold">{date}</p></div>
