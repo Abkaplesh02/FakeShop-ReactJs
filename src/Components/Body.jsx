@@ -5,19 +5,30 @@ import Header from "./Header/Header";
 import MyCarousel from "./MainPageCarousel/MyCarousel";
 import ShowMore from "./Categories/ShowMore";
 import ProductPage from "./Categories/Category/ProductsPage";
+import { Route, BrowserRouter as  Router, Routes } from "react-router-dom";
+
 
 
 const Body=()=>{
+
     return(
-        <div>
+      
+            <Router>
             <Header/>
-            <MyCarousel/>
-            <Categories/>
-            <CardContainer/>
+            <Routes>
+                <Route path="/" element={
+                    <>
+                    <MyCarousel/>
+                    <Categories/>
+                    <CardContainer/>
+                    </>       
+                }/>
+                <Route path="/show-more/:id" element={<ShowMore/>}/>
+                <Route path="/products" element={<ProductPage/>}/>
+            </Routes>
             <Footerlist/>
-            <ShowMore/>
-            <ProductPage/>
-        </div>
+            </Router>
+      
     )
 }
 
