@@ -1,6 +1,7 @@
 import MyPic from "../../assets/wish.png"
 import Rating from "./Ratings/Rating";
-const ProductDetails=()=>{
+const ProductDetails=({data})=>{
+    const {description,rating}=data
 
     const Specification=["Running","Mesh","Lace-Ups","Regular","Non-Marking","Removeable","Medium","Medium"];
     const speci=["Sport","Material","Fastening","Ankle Height","Outsole Type","Cleats","Arch Type","Cushioning"]
@@ -12,7 +13,7 @@ const ProductDetails=()=>{
                 <img src={MyPic}  className="w-6"/>
             </div>
 
-            <h1 className="font-normal text-sm mt-5 w-[400px] text-gray-600">A pair of grey shoes, has regular Styling, lace-ups detail Upper Cushioned footbed Textured and patterned outsole</h1>
+            <h1 className="font-normal text-sm mt-5 w-[400px] text-gray-600">{description}</h1>
 
 
             <div className="mt-8">
@@ -38,7 +39,7 @@ const ProductDetails=()=>{
                     ))
                 }
             </div>
-            <Rating/>
+            <Rating Rdata={data}/>
             
         </div>
     )

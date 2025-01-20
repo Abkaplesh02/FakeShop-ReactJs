@@ -1,8 +1,12 @@
+import { useNavigate} from "react-router-dom";
+
+
 const MyCard=({data})=>{
 
-    console.log(data);
-
-    const {category,price,title,image,description,rating}=data;
+    
+    const {category,price,title,image,description,rating,id}=data;
+    const navigate=useNavigate();
+    
     return(
         <div className="border-2 relative border-transparent shadow-xl hover:shadow-2xl rounded-2xl flex justify-evenly  w-[520px] p-1 py-2  m-10 cursor-pointer ">
 
@@ -16,7 +20,7 @@ const MyCard=({data})=>{
                 <h1 className="overflow-hidden my-1  text-gray-600 text-[1rem] h-[50px]" >{title.length>60 ? title.slice(0,60)+"..." : title}</h1>
                 <h1 className="my-1 text-blue-700 text-bold text-xl">₹ {price}</h1>
                 <div className="absolute top-[140px] flex justify-evenly w-full">
-                    <button className="bg-blue-600 rounded-lg  p-1 text-white">Show More</button>
+                    <button className="bg-blue-600 rounded-lg  p-1 text-white" onClick={()=>navigate(`/show-more/${id}`)}>Show More</button>
                     <button className="bg-gray-600 rounded-lg p-1 text-white">Add to Cart</button>
                 </div>
             </div>

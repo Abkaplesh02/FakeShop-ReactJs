@@ -21,7 +21,7 @@ const SimilarProducts=()=>{
 
                 {
                     data.map((item,index)=>(
-                        <Product data={item}/>
+                        <Product data={item} key={index}/>
                     ))
                 }
             

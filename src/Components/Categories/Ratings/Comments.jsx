@@ -1,9 +1,7 @@
 
 import Mypic from "../../../assets/person.png"
 const Comment=({data,item})=>{
-    console.log(data)
     const {username,rating,date,review}=data;
-    console.log(item)
     return(
 <div className="flex border-2 border-gray-200 py-1 mb-6 rounded-2xl">
 

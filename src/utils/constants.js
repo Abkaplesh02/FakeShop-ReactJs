@@ -18,3 +18,6 @@ export const Beauty=
 
 export const HomeL=
 "https://t4.ftcdn.net/jpg/08/48/47/97/360_F_848479725_C0do9lubdFySzGyV8pbFTVWcyHgDkLmD.jpg";
+
+export const singleProduct=
+"https://fakestoreapi.com/products/";

@@ -10,6 +10,7 @@ import KidsList from '../HeaderLists/KidsList';
 import HomeLiving from '../HeaderLists/HomeLiving';
 import BeautyList from '../HeaderLists/BeautyList';
 import Studio from '../HeaderLists/Studio';
+import { useNavigate } from 'react-router-dom';
 
 const Header=()=>{
 
@@ -19,13 +20,14 @@ const Header=()=>{
     const [homeState,setHomeState]=useState(false);
     const [beautyState,setBeautyState]=useState(false);
     const [studioState,setStudioState]=useState(false);
+    const navigate=useNavigate();
 
 
     const list=["MEN","WOMEN","KIDS","HOME & LIVING","BEAUTY",]
     return(
         <div className='flex justify-between pl-14 items-center pr-8 py-5 shadow-2xl  z-10 fixed top-0 left-0 right-0 bg-white'>
             <div className='w-1/12 mr-[-50px]'>
-            <img src={MyLogo} className='w-[70%] cursor-pointer'/>
+            <img src={MyLogo} onClick={()=>navigate("/")} className='w-[70%] cursor-pointer'/>
             </div>
 
             <ul className='flex justify-between w-4/12 '>
