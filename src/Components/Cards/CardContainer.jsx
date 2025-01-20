@@ -20,7 +20,7 @@ const CardContainer=()=>{
     }
     else{
     return(
-        <div className="mt-40 flex flex-wrap ">
+        <div className="mt-20 flex flex-wrap ">
 
             {
                 data.map((item,index)=>(<MyCard key={index} data={item}/>))

@@ -31,6 +31,7 @@ const MyCarousel=()=>{
         console.log(current)
     }
 
+    
 
     useEffect(()=>{
 

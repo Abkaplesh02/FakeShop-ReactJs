@@ -4,6 +4,7 @@ import Footerlist from "./Footer/Footerlist";
 import Header from "./Header/Header";
 import MyCarousel from "./MainPageCarousel/MyCarousel";
 import ShowMore from "./Categories/ShowMore";
+import ProductPage from "./Categories/Category/ProductsPage";
 
 
 const Body=()=>{
@@ -14,8 +15,8 @@ const Body=()=>{
             <Categories/>
             <CardContainer/>
             <Footerlist/>
-
             <ShowMore/>
+            <ProductPage/>
         </div>
     )
 }

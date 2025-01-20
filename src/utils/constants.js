@@ -3,3 +3,18 @@ export const studioPic=
 
 export const studioLogo=
 "https://constant.myntassets.com/web/assets/img/studio-logo-new.svg";
+
+export const Men=
+"https://cdn-icons-png.flaticon.com/512/4086/4086679.png";
+
+export const Women=
+"https://cdn-icons-png.flaticon.com/512/4515/4515630.png";
+
+export const Kid=
+"https://e7.pngegg.com/pngimages/593/686/png-clipart-child-care-computer-icons-avatar-user-profile-child-child-face.png";
+
+export const Beauty=
+"https://cdn-icons-png.flaticon.com/512/3984/3984637.png";
+
+export const HomeL=
+"https://t4.ftcdn.net/jpg/08/48/47/97/360_F_848479725_C0do9lubdFySzGyV8pbFTVWcyHgDkLmD.jpg";

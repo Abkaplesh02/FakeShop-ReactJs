@@ -1,13 +1,10 @@
-import MyPic from "../../../assets/Timeless, Versatile, Elegant.png"
-import MyPic2 from "../../../assets/Imp.gif"
 const Product=({data})=>{
-    console.log(data);
-    const {category,title,price,rating,image,description}=data;
+    const {title,price,rating,image,description}=data;
 
    
 
     return(
-        <div className="my-6 mx-auto  shadow-2xl hover:scale-110 cursor-pointer  ">
+        <div className="my-6 mx-auto  shadow-lg hover:shadow-2xl hover:scale-110 cursor-pointer  ">
             <div className="relative w-[400px]  ">
                 <img className="w-[390px] h-[400px]" src={image} alt="" />
                 <button className="bg-gray-400 rounded-lg p-1 px-3 text-[0.9rem] font-bold text-white absolute top-[244px]">{rating.rate}⭐️ </button>
