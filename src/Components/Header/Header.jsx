@@ -23,7 +23,7 @@ const Header=()=>{
     const navigate=useNavigate();
 
 
-    const list=["MEN","WOMEN","KIDS","HOME & LIVING","BEAUTY",]
+    const list=["men's clothing","women's clothing","KIDS","electronics","jewelery",]
     return(
         <div className='flex justify-between pl-14 items-center pr-8 py-5 shadow-2xl  z-10 fixed top-0 left-0 right-0 bg-white'>
             <div className='w-1/12 mr-[-50px]'>
@@ -31,13 +31,13 @@ const Header=()=>{
             </div>
 
             <ul className='flex justify-between w-4/12 '>
-               <li className='text-sm text-[#282c3f] font-bold font-sans cursor-pointer border-b-[5px] border-transparent  hover:border-b-[5px] hover:border-blue-900 ' onMouseEnter={()=>setMenState(true)}  onMouseLeave={()=>setMenState(false)}>MEN</li>
-               <li className='text-sm text-[#282c3f] font-bold font-sans cursor-pointer border-b-[5px] border-transparent  hover:border-b-[5px] hover:border-[#ee5f73]' onMouseEnter={()=>setWomenState(true)}  onMouseLeave={()=>setWomenState(false)}>WOMEN 
+               <li className='text-sm text-[#282c3f] font-bold font-sans cursor-pointer border-b-[5px] border-transparent  hover:border-b-[5px] hover:border-blue-900 ' onMouseEnter={()=>setMenState(true)}  onMouseLeave={()=>setMenState(false)} onClick={()=>navigate(`/products/men's clothing`)}>MEN</li>
+               <li className='text-sm text-[#282c3f] font-bold font-sans cursor-pointer border-b-[5px] border-transparent  hover:border-b-[5px] hover:border-[#ee5f73]' onMouseEnter={()=>setWomenState(true)}  onMouseLeave={()=>setWomenState(false)} onClick={()=>navigate(`/products/women's clothing`)} >WOMEN 
 
                </li>
                <li className='text-sm text-[#282c3f] font-bold font-sans cursor-pointer border-b-[5px] border-transparent  hover:border-b-[5px] hover:border-orange-600' onMouseEnter={()=>setKidsState(true)}  onMouseLeave={()=>setKidsState(false)}>KIDS</li>
                <li className='text-sm text-[#282c3f] font-bold font-sans cursor-pointer border-b-[5px] border-transparent  hover:border-b-[5px] hover:border-yellow-600' onMouseEnter={()=>setHomeState(true)}  onMouseLeave={()=>setHomeState(false)}>HOME & LIVING</li>
-               <li className='text-sm text-[#282c3f] font-bold font-sans cursor-pointer border-b-[5px] border-transparent  hover:border-b-[5px] hover:border-green-800' onMouseEnter={()=>setBeautyState(true)}  onMouseLeave={()=>setBeautyState(false)}>BEAUTY</li>
+               <li className='text-sm text-[#282c3f] font-bold font-sans cursor-pointer border-b-[5px] border-transparent  hover:border-b-[5px] hover:border-green-800' onMouseEnter={()=>setBeautyState(true)}  onMouseLeave={()=>setBeautyState(false)} onClick={()=>navigate(`/products/electronics`)}>Electronics</li>
                 <li className='text-sm text-[#282c3f] font-bold font-sans cursor-pointer border-b-[5px] border-transparent hover:border-b-[5px] hover:border-[#ff3f6c]' onMouseEnter={(item)=>setStudioState(true)} onMouseLeave={()=>setStudioState(false)}>STUDIO <sup className='text-[#ff3f6c]'>  NEW</sup></li>
             </ul>
 

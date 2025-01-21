@@ -8,6 +8,7 @@ import { useParams } from "react-router-dom";
 import DataLoading from "../ErrorContent/DataLoading";
 import axios from "axios";
 import { singleProduct } from "../../utils/constants";
+
 const ShowMore=()=>{
 
     const [productData,setProductData]=useState(null);
@@ -17,7 +18,7 @@ const ShowMore=()=>{
      fetchData();   
     },[id])
 
-    if(id==""){
+    if(id=="" ){
         return <DataLoading/>
     }
 
@@ -27,28 +28,33 @@ const ShowMore=()=>{
     .get(`${singleProduct}${id}`)
     .then((response)=>{
         setProductData(response.data);
-        console.log(response.data);
     })
     }
+
+
+    useEffect(()=>{
+        if(productData){
+            window.scrollTo(0,0);
+        }
+    },[productData])
 
     if(productData==null){
         return <DataLoading/>
     }
 
-    const {category,title,image,price,rating,description}=productData;
 
-    console.log(productData)
+    const {category,title,image,price,rating,description}=productData;
 
 
     return(
-        <div className="flex  m-4 mt-16">
+        <div className="flex  m-4 mt-20">
 
             <div className="m-20">
                 <div>
                 <img src={image} className="w-[40vw]"/>
                 </div>
                 <Offer/>
-                <SimilarProducts/>
+                <SimilarProducts categories={category}/>
             </div>
             <div className="my-20 ml-[-20px]">
                 <h1 className="mb-2 font-sans text-[1.4rem] font-bold">{title}</h1>

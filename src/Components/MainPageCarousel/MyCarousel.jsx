@@ -11,6 +11,7 @@ const MyCarousel=()=>{
 
 
     const [current,setCurrent]=useState(0);
+    
     const handleBack=()=>{
 
         if(current==0){
@@ -32,7 +33,6 @@ const MyCarousel=()=>{
     }
 
     
-
     useEffect(()=>{
 
         const interval=setTimeout(()=>{
@@ -52,7 +52,6 @@ const MyCarousel=()=>{
           <img src={items[current]}  className=" relative " />
            <button onClick={handleBack}><img src={Left} className="absolute top-[500px] w-10"/></button>
            <button onClick={handleForw}><img src={Right}  className="absolute top-[500px] left-[1760px] w-12"/></button>
-
         </div>
     )
 }

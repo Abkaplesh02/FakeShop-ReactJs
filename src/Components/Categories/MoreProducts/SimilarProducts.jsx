@@ -1,17 +1,18 @@
-import MyPic2 from "../../../assets/Imp.gif"
 import { fetchData } from "../../../utils/fetchData";
 import DataLoading from "../../ErrorContent/DataLoading";
 import Product from "./Product";
 
 
 
-const SimilarProducts=()=>{
+const SimilarProducts=({categories})=>{
 
     const data=fetchData();
 
     if(data==null){
         return <DataLoading/>;
     }
+
+    const filteredData=data.filter((item)=>item.category==categories);
 
     
     return(
@@ -20,7 +21,7 @@ const SimilarProducts=()=>{
             <div className="flex flex-wrap ">
 
                 {
-                    data.map((item,index)=>(
+                    filteredData.map((item,index)=>(
                         <Product data={item} key={index}/>
                     ))
                 }

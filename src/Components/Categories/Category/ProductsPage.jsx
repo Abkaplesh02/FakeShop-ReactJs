@@ -1,17 +1,25 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { fetchData } from "../../../utils/fetchData";
-import DataLoading from "../../ErrorContent/DataLoading";
 import Product from "../MoreProducts/Product";
+import { useLocation, useParams } from "react-router-dom";
+import ContainerShimmer from "../../Shimmer/ContainerShimmer";
 
 const ProductPage=()=>{
 
     const data=fetchData();
+    const {id}=useParams();
     const [userHeading,setUserHeading]=useState("Similar Products");
 
+    useEffect(()=>{
+            window.scrollTo(0,0)
+            setUserHeading(id)
+    },[id])
+    
     if(data==null){
-        return <DataLoading/>;
+        return <ContainerShimmer/>;
     }
 
+    const filteredData=data.filter((item)=>item.category==id);
 
     return (
         <div className=" mt-24 border-2 border-gray-300 mx-2">
@@ -19,7 +27,7 @@ const ProductPage=()=>{
             <div className="flex flex-wrap ">
 
                 {
-                    data.map((item,index)=>(
+                    filteredData.map((item,index)=>(
                         <Product data={item} index={index}/>
                     ))
                 }

@@ -1,7 +1,8 @@
-const Product=({data})=>{
-    const {title,price,rating,image,description}=data;
+import { useNavigate } from "react-router-dom";
 
-   
+const Product=({data})=>{
+    const {title,price,rating,image,description,id}=data;
+    const navigate=useNavigate();
 
     return(
         <div className="my-6 mx-auto  shadow-lg hover:shadow-2xl hover:scale-110 cursor-pointer  ">
@@ -16,10 +17,10 @@ const Product=({data})=>{
                 
                 <h1 className="text-[1rem]  font-bold my-2">₹ {price} <span className="line-through text-gray-500"> 12000</span></h1>
                 <div className="flex w-9/12 "> 
-                <div className=""> <button className=" mr-6 bg-blue-600 rounded-lg  p-1 text-white">Show More</button></div>
+                <div className=""> <button className=" mr-6 bg-blue-600 rounded-lg  p-1 text-white" onClick={()=>navigate(`/show-more/${id}`)}>Show More</button></div>
                 <div className="">   <button className="bg-gray-500 rounded-lg p-1 text-white">Add to Cart</button></div>
                 </div>
-               
+
                </div>
                
             </div>

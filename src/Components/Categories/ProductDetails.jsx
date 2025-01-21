@@ -31,9 +31,9 @@ const ProductDetails=({data})=>{
                 {
                     speci.map((item,index)=>(
                      
-                        <div className="w-[290px] border-b-2 border-gray-200 my-2 py-2">
-                <p1 className="text-gray-400 text-sm">{item}</p1>
-                <h1 className="text-[1rem] font-normal">{Specification[index]}</h1>
+                        <div className="w-[290px] border-b-2 border-gray-200 my-2 py-2" key={index}>
+                <p1 className="text-gray-400 text-sm" >{item}</p1>
+                <h1 className="text-[1rem] font-normal" >{Specification[index]}</h1>
                 </div>
                                     
                     ))

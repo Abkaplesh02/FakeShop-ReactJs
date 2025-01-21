@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom";
+
 const MenList = ({ setMenState }) => {
+  const navigate=useNavigate();
   const TopWear = [
     "T-Shirts",
     "Casual Shirts",
@@ -69,6 +72,7 @@ const MenList = ({ setMenState }) => {
     <div
       onMouseEnter={() => setMenState(true)}
       onMouseLeave={() => setMenState(false)}
+    
       className=" w-7/12 flex justify-between absolute top-[85px] left-[170px] bg-white p-8 shadow-2xl "
     >
       <div>
@@ -78,6 +82,8 @@ const MenList = ({ setMenState }) => {
           </li>
           {TopWear.map((item, index) => (
             <li
+            onClick={(item)=>
+              navigate(`/items`,{state:{category:item,data:"men"}})}
               className="text-sm my-1 text-gray-500 font-sans cursor-pointer hover:text-blue-900 hover:font-semibold"
               key={index}
             >
@@ -94,6 +100,7 @@ const MenList = ({ setMenState }) => {
           </li>
           {IndianFestive.map((item, index) => (
             <li
+            onClick={(itemitem)=>navigate(`/items`,{state:{category:item,data:"men"}})}
               className="text-sm my-1 text-gray-500 font-sans cursor-pointer  hover:text-blue-900 hover:font-semibold"
               key={index}
             >
@@ -110,6 +117,7 @@ const MenList = ({ setMenState }) => {
           </li>
           {BottomWear.map((item, index) => (
             <li
+            onClick={(item)=>navigate(`/items`,{state:{category:item,data:"men"}})}
               className="text-sm my-1 text-gray-500 font-sans cursor-pointer  hover:text-blue-900 hover:font-semibold"
               key={index}
             >
@@ -126,6 +134,7 @@ const MenList = ({ setMenState }) => {
           </li>
           {InnerWear.map((item, index) => (
             <li
+            onClick={(item)=>navigate(`/items`,{state:{category:item,data:"men"}})}
               className="text-sm my-1 text-gray-500 font-sans cursor-pointer  hover:text-blue-900 hover:font-semibold"
               key={index}
             >
@@ -142,6 +151,7 @@ const MenList = ({ setMenState }) => {
           </li>
           {FootWear.map((item, index) => (
             <li
+            onClick={(item)=>navigate(`/items`,{state:{category:item,data:"men"}})}
               className="text-sm my-1 text-gray-500 font-sans cursor-pointer  hover:text-blue-900 hover:font-semibold"
               key={index}
             >
@@ -176,6 +186,7 @@ const MenList = ({ setMenState }) => {
           </li>
           {Sports.map((item, index) => (
             <li
+            onClick={(item)=>navigate(`/items`,{state:{category:item,data:"men"}})}
               className="text-sm my-1 text-gray-500 font-sans cursor-pointer  hover:text-blue-900 hover:font-semibold"
               key={index}
             >
@@ -190,6 +201,7 @@ const MenList = ({ setMenState }) => {
           </li>
           {Gadgets.map((item, index) => (
             <li
+            onClick={(item)=>navigate(`/items`,{state:{category:item,data:"men"}})}
               className="text-sm my-1 text-gray-500 font-sans cursor-pointer  hover:text-blue-900 hover:font-semibold"
               key={index}
             >
@@ -206,6 +218,7 @@ const MenList = ({ setMenState }) => {
           </li>
           {Accessories.map((item, index) => (
             <li
+            onClick={(item)=>navigate(`/items`,{state:{category:item,data:"men"}})}
               className="text-sm my-1 text-gray-500 font-sans cursor-pointer  hover:text-blue-900 hover:font-semibold"
               key={index}
             >

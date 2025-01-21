@@ -2,12 +2,14 @@ import MyPic from "../../assets/Mens.png"
 import MyPic1 from "../../assets/Women.png"
 import MyPic2 from "../../assets/kidsP.png"
 import MyPic3 from "../../assets/HomeDecor.png"
-import MyPic4 from "../../assets/kidsP.png"
+import MyPic4 from "../../assets/Beauty.png"
+import { useNavigate } from "react-router-dom"
 
 
 const Categories=()=>{
-    const cart=["MEN","WOMEN","KIDS","HOME & LIVING","BEAUTY"]
+    const cart=["men's clothing","women's clothing","KIDS","HOME & LIVING","jewelery"]
     const Pics=[MyPic,MyPic1,MyPic2,MyPic3,MyPic4];
+    const navigate=useNavigate();
     return(
         <> 
         <div className="mt-40 w-full">
@@ -19,7 +21,7 @@ const Categories=()=>{
 
             {
                 cart.map((item,index)=>( 
-                    <div className="rounded-full w-[180px] flex justify-center items-center flex-col hover:scale-125 cursor-pointer mx-8">
+                    <div className="rounded-full w-[180px] flex justify-center items-center flex-col hover:scale-125 cursor-pointer mx-8" onClick={()=>navigate(`/products/${item}`)}>
             <img className="rounded-full my-6 " src={Pics[index]} key={index}/>
             <h1 className="text-sm font-bold font-sans text-gray-700">{item}</h1>
            </div>
