@@ -20,7 +20,7 @@ const CardContainer=()=>{
     }
     else{
     return(
-        <div className="mt-20 flex flex-wrap ">
+        <div className="mt-20 grid grid-cols-3 ">
 
             {
                 data.map((item,index)=>(<MyCard key={index} data={item}/>))

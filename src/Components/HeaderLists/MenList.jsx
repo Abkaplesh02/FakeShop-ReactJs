@@ -73,7 +73,7 @@ const MenList = ({ setMenState }) => {
       onMouseEnter={() => setMenState(true)}
       onMouseLeave={() => setMenState(false)}
     
-      className=" w-7/12 flex justify-between absolute top-[85px] left-[170px] bg-white p-8 shadow-2xl "
+      className=" w-7/12 flex justify-between absolute top-[80px] left-[170px] bg-white p-8 shadow-2xl "
     >
       <div>
         <ul className="border-b-2 border-gray-300 my-4 pb-4">
@@ -82,8 +82,7 @@ const MenList = ({ setMenState }) => {
           </li>
           {TopWear.map((item, index) => (
             <li
-            onClick={(item)=>
-              navigate(`/items`,{state:{category:item,data:"men"}})}
+            onClick={()=>navigate(`/items`,{ state: { category: item, data: "men's clothing" } })}
               className="text-sm my-1 text-gray-500 font-sans cursor-pointer hover:text-blue-900 hover:font-semibold"
               key={index}
             >
@@ -100,7 +99,7 @@ const MenList = ({ setMenState }) => {
           </li>
           {IndianFestive.map((item, index) => (
             <li
-            onClick={(itemitem)=>navigate(`/items`,{state:{category:item,data:"men"}})}
+            onClick={()=>navigate(`/items`,{ state: { category: item, data: "men's clothing" } })}
               className="text-sm my-1 text-gray-500 font-sans cursor-pointer  hover:text-blue-900 hover:font-semibold"
               key={index}
             >
@@ -117,7 +116,7 @@ const MenList = ({ setMenState }) => {
           </li>
           {BottomWear.map((item, index) => (
             <li
-            onClick={(item)=>navigate(`/items`,{state:{category:item,data:"men"}})}
+              onClick={()=>navigate(`/items`,{ state: { category: item, data: "men's clothing" } })}
               className="text-sm my-1 text-gray-500 font-sans cursor-pointer  hover:text-blue-900 hover:font-semibold"
               key={index}
             >
@@ -134,7 +133,7 @@ const MenList = ({ setMenState }) => {
           </li>
           {InnerWear.map((item, index) => (
             <li
-            onClick={(item)=>navigate(`/items`,{state:{category:item,data:"men"}})}
+            onClick={()=>navigate(`/items`,{ state: { category: item, data: "men's clothing" } })}
               className="text-sm my-1 text-gray-500 font-sans cursor-pointer  hover:text-blue-900 hover:font-semibold"
               key={index}
             >
@@ -151,7 +150,7 @@ const MenList = ({ setMenState }) => {
           </li>
           {FootWear.map((item, index) => (
             <li
-            onClick={(item)=>navigate(`/items`,{state:{category:item,data:"men"}})}
+            onClick={()=>navigate(`/items`,{ state: { category: item, data: "men's clothing" } })}
               className="text-sm my-1 text-gray-500 font-sans cursor-pointer  hover:text-blue-900 hover:font-semibold"
               key={index}
             >
@@ -186,7 +185,7 @@ const MenList = ({ setMenState }) => {
           </li>
           {Sports.map((item, index) => (
             <li
-            onClick={(item)=>navigate(`/items`,{state:{category:item,data:"men"}})}
+              onClick={()=>navigate(`/items`,{ state: { category: item, data: "men's clothing" } })}
               className="text-sm my-1 text-gray-500 font-sans cursor-pointer  hover:text-blue-900 hover:font-semibold"
               key={index}
             >
@@ -201,7 +200,7 @@ const MenList = ({ setMenState }) => {
           </li>
           {Gadgets.map((item, index) => (
             <li
-            onClick={(item)=>navigate(`/items`,{state:{category:item,data:"men"}})}
+              onClick={()=>navigate(`/items`,{ state: { category: item, data: "men's clothing" } })}
               className="text-sm my-1 text-gray-500 font-sans cursor-pointer  hover:text-blue-900 hover:font-semibold"
               key={index}
             >
@@ -218,7 +217,7 @@ const MenList = ({ setMenState }) => {
           </li>
           {Accessories.map((item, index) => (
             <li
-            onClick={(item)=>navigate(`/items`,{state:{category:item,data:"men"}})}
+              onClick={()=>navigate(`/items`,{ state: { category: item, data: "men's clothing" } })}
               className="text-sm my-1 text-gray-500 font-sans cursor-pointer  hover:text-blue-900 hover:font-semibold"
               key={index}
             >

@@ -8,7 +8,7 @@ const MyCard=({data})=>{
     const navigate=useNavigate();
     
     return(
-        <div className="border-2 relative border-transparent shadow-xl hover:shadow-2xl rounded-2xl flex justify-evenly  w-[520px] p-1 py-2  m-10 cursor-pointer ">
+        <div className=" border-2 relative border-transparent shadow-xl hover:shadow-2xl hover: rounded-2xl flex justify-evenly  w-[520px] p-1 py-2  m-10 cursor-pointer ">
 
             <div className=" h-[250px] flex items-center">
             <img className="rounded-xl h-[220px] w-[200px]" src={image}/>

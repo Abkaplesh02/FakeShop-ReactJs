@@ -47,16 +47,16 @@ const ShowMore=()=>{
 
 
     return(
-        <div className="flex  m-4 mt-20">
+        <div className="grid grid-cols-2 gap-[160px]  m-4 mt-20">
 
-            <div className="m-20">
+            <div className="m-20 w-full">
                 <div>
-                <img src={image} className="w-[40vw]"/>
+                <img src={image} className="w-[36vw]"/>
                 </div>
                 <Offer/>
-                <SimilarProducts categories={category}/>
+                <SimilarProducts  categories={category}/>
             </div>
-            <div className="my-20 ml-[-20px]">
+            <div className="my-20">
                 <h1 className="mb-2 font-sans text-[1.4rem] font-bold">{title}</h1>
                 <h1 className="text-[1.1rem] mb-4 font-sans text-gray-500">{category}</h1>
                 <div className="border-b  border-gray-300 pb-4 mb-4"> <button className="bg-gray-300 rounded-lg p-1 px-3 text-[0.9rem] font-bold ">{rating.rate}⭐️ | {rating.count}</button></div>

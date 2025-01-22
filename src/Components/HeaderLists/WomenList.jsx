@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom";
+
 const WomenList = ({ setWomenState }) => {
+  const navigate=useNavigate();
   const Indian = [
     "Kurta & Suits",
     "Ethnic Dresses",
@@ -95,12 +98,13 @@ const WomenList = ({ setWomenState }) => {
       <div>
         <ul className="border-b-2 border-gray-300 my-4 pb-4 ">
           <li>
-            <h1 className="text-[#ee5f73] text-[0.9rem] text-[0.9rem]">
+            <h1 className="text-[#ee5f73] text-[0.9rem] ">
               Indian & Fusion Wear
             </h1>
           </li>
           {Indian.map((item, index) => (
             <li
+              onClick={()=>navigate(`/items`,{ state: { category: item, data: "women's clothing" } })}
               className="text-sm my-1 text-gray-500 font-sans cursor-pointer  hover:text-[#ee5f73] hover:font-semibold"
               key={index}
             >
@@ -130,6 +134,7 @@ const WomenList = ({ setWomenState }) => {
           </li>
           {WesternWear.map((item, index) => (
             <li
+              onClick={()=>navigate(`/items`,{ state: { category: item, data: "women's clothing" } })}
               className="text-sm my-1 text-gray-500 font-sans cursor-pointer hover:text-[#ee5f73] hover:font-semibold"
               key={index}
             >
@@ -152,6 +157,7 @@ const WomenList = ({ setWomenState }) => {
           </li>
           {Footwwear.map((item, index) => (
             <li
+              onClick={()=>navigate(`/items`,{ state: { category: item, data: "women's clothing" } })}
               className="text-sm my-1 text-gray-500 font-sans cursor-pointer hover:text-[#ee5f73] hover:font-semibold"
               key={index}
             >
@@ -186,6 +192,7 @@ const WomenList = ({ setWomenState }) => {
           </li>
           {SportsActiveWear.map((item, index) => (
             <li
+              onClick={()=>navigate(`/items`,{ state: { category: item, data: "women's clothing" } })}
               className="text-sm my-1 text-gray-500 font-sans cursor-pointer hover:text-[#ee5f73] hover:font-semibold"
               key={index}
             >
@@ -200,6 +207,7 @@ const WomenList = ({ setWomenState }) => {
           </li>
           {Gadgets.map((item, index) => (
             <li
+              onClick={()=>navigate(`/items`,{ state: { category: item, data: "women's clothing" } })}
               className="text-sm my-1 text-gray-500 font-sans cursor-pointer hover:text-[#ee5f73] hover:font-semibold"
               key={index}
             >
@@ -216,6 +224,7 @@ const WomenList = ({ setWomenState }) => {
           </li>
           {Jwellery.map((item, index) => (
             <li
+              onClick={()=>navigate(`/items`,{ state: { category: item, data: "women's clothing" } })}
               className="text-sm my-1 text-gray-500 font-sans cursor-pointer hover:text-[#ee5f73] hover:font-semibold"
               key={index}
             >

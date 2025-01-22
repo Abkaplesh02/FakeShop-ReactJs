@@ -18,11 +18,11 @@ const SimilarProducts=({categories})=>{
     return(
         <div className=" mt-14">
             <div className="flex justify-center text-xl text-gray-600 font-bold font-sans my-16">Similar Products</div>
-            <div className="flex flex-wrap ">
+            <div className="grid grid-cols-2 gap-20">
 
                 {
                     filteredData.map((item,index)=>(
-                        <Product data={item} key={index}/>
+                        <Product  data={item} key={index}/>
                     ))
                 }
             

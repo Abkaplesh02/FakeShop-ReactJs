@@ -21,8 +21,8 @@ const Categories=()=>{
 
             {
                 cart.map((item,index)=>( 
-                    <div className="rounded-full w-[180px] flex justify-center items-center flex-col hover:scale-125 cursor-pointer mx-8" onClick={()=>navigate(`/products/${item}`)}>
-            <img className="rounded-full my-6 " src={Pics[index]} key={index}/>
+                    <div key={index} className="rounded-full w-[180px] flex justify-center items-center flex-col hover:scale-125 cursor-pointer mx-8" onClick={()=>navigate(`/products/${item}`)}>
+            <img className="rounded-full my-6 " src={Pics[index]} />
             <h1 className="text-sm font-bold font-sans text-gray-700">{item}</h1>
            </div>
                 ))

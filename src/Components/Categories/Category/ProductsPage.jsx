@@ -24,7 +24,7 @@ const ProductPage=()=>{
     return (
         <div className=" mt-24 border-2 border-gray-300 mx-2">
             <div className="flex justify-center text-xl text-gray-600 font-bold font-sans my-16">{userHeading}</div>
-            <div className="flex flex-wrap ">
+            <div className="grid grid-cols-3 ">
 
                 {
                     filteredData.map((item,index)=>(
