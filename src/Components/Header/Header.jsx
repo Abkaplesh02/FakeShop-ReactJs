@@ -3,7 +3,7 @@ import MyPerson from '../../assets/person.png';
 import MyWish from '../../assets/paper.png'
 import MyCart from '../../assets/add-to-cart.png'
 import MySearch from '../../assets/search.png'
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import MenList from '../HeaderLists/MenList';
 import WomenList from '../HeaderLists/WomenList';
 import KidsList from '../HeaderLists/KidsList';
@@ -21,9 +21,20 @@ const Header=()=>{
     const [beautyState,setBeautyState]=useState(false);
     const [studioState,setStudioState]=useState(false);
     const navigate=useNavigate();
+    const input=useRef();
+    const [search,setSearch]=useState('');
+
 
 
     const list=["men's clothing","women's clothing","KIDS","electronics","jewelery",]
+
+    const handleSearch=()=>{
+        if(search){
+            navigate(`search`, { state : { category: input.current.value , data: "" }})
+            setSearch('');
+        }
+
+    }
     return(
         <div className='flex justify-between pl-14 items-center pr-8 py-5 shadow-2xl  z-10 fixed top-0 left-0 right-0 bg-white'>
             <div className='w-1/12 mr-[-50px]'>
@@ -52,8 +63,8 @@ const Header=()=>{
 
             <div className='w-4/12 flex items-center'>
             <div>
-            <img src={MySearch} className='h-[40px] pr-2 bg-[#f5f5f6] p-2 pl-4'/></div>
-                <input type="text" className='w-full bg-[#f5f5f6] h-10 pl-4' placeholder='Search for products, brands and more'/>
+            <img src={MySearch} className='h-[40px] pr-2 bg-[#f5f5f6] p-2 pl-4'  onClick={()=>handleSearch()} /></div>
+                <input value={search} onChange={(e)=>setSearch(e.target.value)} type="text" onKeyDown={(e)=>{if(e.key==="Enter") handleSearch()}} ref={input} className='w-full bg-[#f5f5f6] h-10 pl-4' placeholder='Search for products, brands and more'/>
             </div>
 
             <div className='flex justify-evenly w-2/12'> 

@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import MyPic1 from "../../assets/mens.png"
 import MyPic2 from "../../assets/wishlist.png"
 import SimilarProducts from "./MoreProducts/SimilarProducts";
 import Offer from "./Offer";
