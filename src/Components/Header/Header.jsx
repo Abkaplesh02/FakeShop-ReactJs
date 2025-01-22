@@ -74,13 +74,13 @@ const Header=()=>{
                 <img src={MyPerson} className='w-6 mb-2' />
                 <h1 className='text-xs text-[#282c3f] font-bold font-sans'>Profile</h1>
             </div>
-            <div className='flex flex-col items-center justify-center cursor-pointer '>
+            <div className='flex flex-col items-center justify-center cursor-pointer ' onClick={()=>navigate("/wishlist")}>
                 <img src={MyWish} className='w-6 mb-2' />
-                <h1 className='text-xs text-[#282c3f] font-bold font-sans'>Wishlist</h1>
+                <h1 className='text-xs text-[#282c3f] font-bold font-sans' >Wishlist</h1>
             </div>
-            <div className='flex flex-col items-center justify-center cursor-pointer '>
+            <div className='flex flex-col items-center justify-center cursor-pointer ' onClick={()=>navigate("/cart")}>
                 <img src={MyCart}  className='w-6 mb-2'/>
-                <h1 className='text-xs text-[#282c3f] font-bold font-sans'>Cart</h1>
+                <h1 className='text-xs text-[#282c3f] font-bold font-sans' >Cart</h1>
             </div>
 
             </div>

@@ -9,6 +9,8 @@ import { Route, BrowserRouter as  Router, Routes, useParams } from "react-router
 import { useEffect } from "react";
 import HLProducts from "./Header/HeaderListProducts/HLProducts";
 import SearchProducts from "./SearchPage/SearchProducts";
+import WishListC from "./Header/WishList/WishListC";
+import CartC from "./Header/Cart.jsx/CartC";
 
 const Body=()=>{
     const {id}=useParams();
@@ -32,6 +34,8 @@ const Body=()=>{
                 <Route path="/products/:id" element={<ProductPage/>}/>
                 <Route path="/items" element={<HLProducts/>}/>
                 <Route path="/search" element={<SearchProducts/>}/>
+                <Route path="/wishlist" element={<WishListC/>}/>
+                <Route path="/cart" element={<CartC/>}/>
 
             </Routes>
             <Footerlist/>
