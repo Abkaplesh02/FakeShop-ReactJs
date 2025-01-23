@@ -3,15 +3,17 @@ import MyCard from "../Cards/MyCard";
 import { useEffect, useState } from "react";
 import ContainerShimmer from "../Shimmer/ContainerShimmer";
 
+
 const CardContainer=()=>{
 
     const [data,setData]=useState(null);
-
+     
     useEffect(()=>{
     axios
     .get("https://fakestoreapi.com/products")
     .then((response)=>{
         setData(response.data)
+        
     })
     },[]);
 

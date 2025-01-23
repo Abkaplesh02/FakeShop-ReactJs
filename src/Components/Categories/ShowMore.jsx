@@ -3,15 +3,18 @@ import MyPic2 from "../../assets/wishlist.png"
 import SimilarProducts from "./MoreProducts/SimilarProducts";
 import Offer from "./Offer";
 import ProductDetails from "./ProductDetails";
-import { useParams } from "react-router-dom";
+import { data, useParams } from "react-router-dom";
 import DataLoading from "../ErrorContent/DataLoading";
 import axios from "axios";
 import { singleProduct } from "../../utils/constants";
+import { toast, ToastContainer } from "react-toastify";
 
 const ShowMore=()=>{
 
     const [productData,setProductData]=useState(null);
     const {id}=useParams();
+    const successNotify=()=>toast("Success! Item added ", { autoClose: 2000 })
+    const FailureNotify=()=>toast.error("Failed! try again", { autoClose: 2000 })
 
     useEffect(()=>{
      fetchData();   
@@ -44,7 +47,37 @@ const ShowMore=()=>{
 
     const {category,title,image,price,rating,description}=productData;
 
+    const dataList={
+        productId:id,
+        category:category,
+        price:price,
+        title:title,
+        image:image,
+        rating:rating.rate,
+        ratingC:rating.count
+    }
 
+    const handleCart=async()=>{
+       
+        try{
+            const response = await axios.post("http://localhost:3000/cart",dataList);
+            successNotify();
+        }
+        catch{
+            FailureNotify();
+        }
+    }
+
+    const handleWishList=async()=>{
+        try{
+            const response = await axios.post("http://localhost:3000/wishlist",dataList);
+            successNotify();
+        }
+        catch{
+            FailureNotify();
+        }
+    }
+    
     return(
         <div className="grid grid-cols-2 gap-[160px]  m-4 mt-20">
 
@@ -62,16 +95,15 @@ const ShowMore=()=>{
                 <h1 className="font-bold mb-4 text-[1.2rem]">₹{price} <span className="text-gray-500"> MRP</span> <span className="line-through font-light text-gray-500">1699</span></h1>
                 <h1 className="text-green-600 text-[1rem] font-bold mb-8">inclusive of all taxes</h1>
                 <div className="flex pb-8 border-b-2 border-gray-200  ">
-                    <button className="bg-blue-600 text-white p-2 px-20 mr-5 rounded-lg ">ADD TO BAG</button>
-                <button className="flex items-center justify-evenly bg-white text-gray-500 border-2 mr-0 rounded-lg border-gray-400  p-2 px-20" ><img className="w-5 mr-2" src={MyPic2}/>WISHLIST</button>
+                    <button className="bg-blue-600 text-white p-2 px-20 mr-5 rounded-lg " onClick={handleCart}>ADD TO CART</button>
+                <button className="flex items-center justify-evenly bg-white text-gray-500 border-2 mr-0 rounded-lg border-gray-400  p-2 px-20" onClick={handleWishList} ><img className="w-5 mr-2" src={MyPic2}/>WISHLIST</button>
                 </div>
                 <ProductDetails data={productData}/>
                 
                 
             </div>
             
-            
-
+        <ToastContainer position="top-right"/>
         </div>
     )
 }

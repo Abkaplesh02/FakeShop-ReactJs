@@ -11,6 +11,7 @@ import HLProducts from "./Header/HeaderListProducts/HLProducts";
 import SearchProducts from "./SearchPage/SearchProducts";
 import WishListC from "./Header/WishList/WishListC";
 import CartC from "./Header/Cart.jsx/CartC";
+import { ToastContainer } from "react-toastify";
 
 const Body=()=>{
     const {id}=useParams();

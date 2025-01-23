@@ -4,11 +4,17 @@ import DeletePic from "../../../assets/delete.png";
 import { useState } from "react";
 import plus from "../../../assets/plus.png"
 import minus from "../../../assets/minus .png"
+import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
 
-const CartProduct=()=>{
+const CartProduct=({data,getData})=>{
 
-    const data=fetchData();
     const [count,setCount]=useState(1);
+    const deleteNotify=()=>{
+        toast.success("Item deleted!" , { autoClose: 2000 });
+    }
+    const errorNotify=()=>toast.error("Some Error occured" , { autoClose: 2000 });
+
 
     const decreaseCount =()=>{
         if(count==1){
@@ -22,7 +28,23 @@ const CartProduct=()=>{
     if(data==null){
         return <ContainerShimmer/>
     }
-    const {id,title,category,image,description,price,rating}=data[13];
+    console.log(data);
+    const {id,title,category,image,description,price,rating,ratingC,productId}=data;
+
+    const handleDelete= async ()=>{
+        try {
+
+
+            const response = await axios.delete(`http://localhost:3000/cart/${id}`);
+            deleteNotify();
+            getData();
+        }
+        catch{ 
+        
+            errorNotify();
+        }
+    
+    }
     
     return (
 
@@ -35,14 +57,15 @@ const CartProduct=()=>{
                     <div className="w-9/12">
                         <div className="font-sans font-bold text-lg text-blue-700 my-2">{title.slice(0,120)}</div>
                         <div className="font-sans font-semibold text-sm text-gray-700 my-2">{category}</div>
-                        <div className="border-b  border-gray-300 pb-4 mb-4 my-6"> <button className="bg-gray-300 rounded-lg p-1 px-3 text-[0.9rem] font-bold ">{rating.rate}⭐️ | {rating.count}</button></div>
+                        <div className="border-b  border-gray-300 pb-4 mb-4 my-6"> <button className="bg-gray-300 rounded-lg p-1 px-3 text-[0.9rem] font-bold ">{rating}⭐️ | {ratingC}</button></div>
                         <div className="text-[1.4rem]  font-bold my-6 flex gap-4 "><span><img src={minus} className="w-8" onClick={()=>decreaseCount()}/> </span>{count}<img src={plus} className="w-8" onClick={()=>setCount(count+1)}/></div>
                         <div className="text-[1rem]  font-bold my-2">₹ {(price*count).toFixed(2)}</div>
-                        <div className="flex gap-16 items-center my-8"><div className="">   <button className="bg-gray-600 text-lg rounded-lg p-2 px-36 text-white hover:bg-blue-600 ">Add to Cart</button></div>
-                        <div className="cursor-pointer"><img src={DeletePic} className="w-12"/></div></div>
+                        <div className="flex gap-16 items-center my-8"><div className="">   <button className="bg-gray-600 text-lg rounded-lg p-2 px-36 text-white hover:bg-blue-600 ">Check out</button></div>
+                        <div onClick={handleDelete} className="cursor-pointer"><img  src={DeletePic} className="w-12"/></div></div>
                     </div>
-        
+                    
                 </div>
+                <ToastContainer position="top-right"/>
                 </>
     )
 }
