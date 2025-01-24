@@ -9,7 +9,7 @@ const HomeLiving=({setHomeState})=>{
     const storage=['Boxes','Baskets','Organisers','Racks & Shelves','Hooks & Holders','Storage Bags','Storage Boxes','Storage Baskets','Storage ','Storage Racks','Storage Hooks','Storage Holders'];
 
     return(
-        <div onMouseEnter={()=>setHomeState(true)} onMouseLeave={()=>setHomeState(false)} className="w-6/12 flex justify-between absolute top-[80px] left-[170px] bg-white p-8 shadow-2xl ">
+        <div onMouseEnter={()=>setHomeState(true)} onMouseLeave={()=>setHomeState(false)} className="w-6/12 flex justify-between absolute top-[70px] left-[170px] bg-white p-8 shadow-2xl ">
             
 
         <div>

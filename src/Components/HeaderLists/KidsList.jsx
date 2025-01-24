@@ -10,7 +10,7 @@ const KidsList=({setKidsState})=>{
 
 
     return(
-        <div onMouseEnter={()=>setKidsState(true)} onMouseLeave={()=>setKidsState(false)} className="w-6/12 flex justify-between absolute top-[80px] left-[170px] bg-white p-8 shadow-2xl ">
+        <div onMouseEnter={()=>setKidsState(true)} onMouseLeave={()=>setKidsState(false)} className="w-6/12 flex justify-between absolute top-[70px] left-[170px] bg-white p-8 shadow-2xl ">
             
 
         <div>

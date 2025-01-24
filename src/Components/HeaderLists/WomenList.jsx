@@ -93,7 +93,7 @@ const WomenList = ({ setWomenState }) => {
     <div
       onMouseEnter={() => setWomenState(true)}
       onMouseLeave={() => setWomenState(false)}
-      className="w-7/12 flex justify-between absolute top-[80px] left-[170px] bg-white p-8 shadow-2xl "
+      className="w-7/12 flex justify-between absolute top-[70px] left-[170px] bg-white p-8 shadow-2xl "
     >
       <div>
         <ul className="border-b-2 border-gray-300 my-4 pb-4 ">
