@@ -48,10 +48,10 @@ const MyCarousel=()=>{
         }
     })
     return(
-        <div className="relative top-[130px]">
-          <img src={items[current]}  className=" relative " />
-           <button onClick={handleBack}><img src={Left} className="absolute top-[500px] w-10"/></button>
-           <button onClick={handleForw}><img src={Right}  className="absolute top-[500px] left-[1760px] w-12"/></button>
+        <div className="relative top-[110px] w-full flex justify-center items-center">
+          <img src={items[current]}  className=" relative w-full " />
+           <button onClick={handleBack} className="absolute left-4 top-1/2 transform -translate-y-1/2"><img src={Left} className=" w-12"/></button>
+           <button onClick={handleForw} className="absolute right-4 top-1/2 transform -translate-y-1/2"><img src={Right}  className="w-12"/></button>
         </div>
     )
 }
