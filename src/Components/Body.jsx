@@ -11,7 +11,7 @@ import HLProducts from "./Header/HeaderListProducts/HLProducts";
 import SearchProducts from "./SearchPage/SearchProducts";
 import WishListC from "./Header/WishList/WishListC";
 import CartC from "./Header/Cart.jsx/CartC";
-import { ToastContainer } from "react-toastify";
+import PageNotFound from "./ErrorContent/PageNotFound";
 
 const Body=()=>{
     const {id}=useParams();
@@ -37,6 +37,7 @@ const Body=()=>{
                 <Route path="/search" element={<SearchProducts/>}/>
                 <Route path="/wishlist" element={<WishListC/>}/>
                 <Route path="/cart" element={<CartC/>}/>
+                <Route path="/*" element={<PageNotFound/>}/>
 
             </Routes>
             <Footerlist/>

@@ -3,6 +3,10 @@ import cart from "../../../assets/cart.png"
 import CartProduct from "./CartProduct";
 import axios from "axios";
 import ContainerShimmer from "../../Shimmer/ContainerShimmer";
+import NoDataFound from "../../Shimmer/NoDataFound"
+import Subtotal from "./Subtotal";
+
+
 
 
 const CartC=()=>{
@@ -16,10 +20,15 @@ const CartC=()=>{
     const getData=async()=>{
         const response=await axios.get("http://localhost:3000/cart");
         setData(response.data);
+        // window.scrollTo(0,0);
     }
     if(data==null){
         return <ContainerShimmer/>
     }
+
+    let totalQ=data.reduce((previousValue,currentValue)=>(previousValue+(currentValue.quantity)),0);
+
+    
    
     return (
         <div className="my-40">
@@ -27,7 +36,11 @@ const CartC=()=>{
             {
                 data.map((item,index)=>(<CartProduct data={item} key={index} getData={getData}/>))
             }
-           
+
+            {
+                (totalQ>0) ? <Subtotal data={data} getData={getData}/> : <NoDataFound/>
+            }
+   
         </div>
     )
 }

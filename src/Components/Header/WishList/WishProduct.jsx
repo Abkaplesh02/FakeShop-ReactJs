@@ -3,10 +3,11 @@ import DeletePic from "../../../assets/delete.png"
 import axios from "axios";
 import { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 
 const WishProduct=({data,getData})=>{
-    const [wishList,setWishList]=useState([]);
+    const navigate=useNavigate();
     const successNotify=()=>toast("Item added !" , { autoClose: 2000 });
     const failureNotify=()=>toast("Error ! Try again" , { autoClose: 2000 })
     const successD=()=>toast("Deleted !!", { autoClose: 2000 })
@@ -23,9 +24,10 @@ const WishProduct=({data,getData})=>{
             title:title,
             category:category,
             image:image,
-            price:price,
+            price:price*100,
             rating:rating,
-            ratingC:ratingC
+            ratingC:ratingC,
+            quantity:1
         };
         try{
             const response=await axios.post("http://localhost:3000/cart",dataSend);
@@ -48,7 +50,6 @@ const WishProduct=({data,getData})=>{
             failureNotify();
         }
     }
-
     
     return (
         <>
@@ -59,10 +60,10 @@ const WishProduct=({data,getData})=>{
             </div>
 
             <div className="w-9/12">
-                <div className="font-sans font-bold text-lg text-blue-700 my-2">{title.slice(0,120)}</div>
+                <div className="font-sans font-bold text-lg text-blue-700 my-2 cursor-pointer" onClick={()=>navigate(`/show-more/${productId}`)}>{title.slice(0,120)}</div>
                 <div className="font-sans font-semibold text-sm text-gray-700 my-2">{category}</div>
                 <div className="border-b  border-gray-300 pb-4 mb-4 my-6"> <button className="bg-gray-300 rounded-lg p-1 px-3 text-[0.9rem] font-bold ">{rating}⭐️ | {ratingC}</button></div>
-                <div className="text-[1rem]  font-bold my-2">₹ {price} <span className="line-through text-gray-500"> 12000</span> </div>
+                <div className="text-[1rem]  font-bold my-2">₹ {(price*100).toFixed(2)} <span className="line-through text-gray-500"> 12000</span> </div>
                 <div className="flex gap-16 items-center my-8"><div className="">   <button className="bg-gray-600 text-lg rounded-lg p-2 px-36 text-white hover:bg-blue-600" onClick={()=>addToCart()}>Add to Cart</button></div>
                 <div className="cursor-pointer" onClick={handleDelete} ><img src={DeletePic} className="w-12"/></div></div>
             </div>

@@ -28,7 +28,7 @@ const ProductPage=()=>{
 
                 {
                     filteredData.map((item,index)=>(
-                        <Product data={item} index={index}/>
+                        <Product data={item} index={index} key={index}/>
                     ))
                 }
             

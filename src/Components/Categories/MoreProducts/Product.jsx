@@ -13,11 +13,13 @@ const Product=({data})=>{
         const dataList={
             productId:id,
             category:category,
-            price:price,
+            price:price*100,
             title:title,
             image:image,
             rating:rating.rate,
-            ratingC:rating.count
+            ratingC:rating.count,
+            quantity:1,
+            
         }
 
         try{
@@ -41,7 +43,7 @@ const Product=({data})=>{
                     { description.slice(0,115)}........
                     </h1>
                 
-                <h1 className="text-[1rem]  font-bold my-2">₹ {price} <span className="line-through text-gray-500"> 12000</span></h1>
+                <h1 className="text-[1rem]  font-bold my-2">₹ {(price*100).toFixed(2)} <span className="line-through text-gray-500"> 12000</span></h1>
                 <div className="flex w-9/12 "> 
                 <div className=""> <button className=" mr-6 bg-blue-600 rounded-lg  p-1 text-white" onClick={()=>navigate(`/show-more/${id}`)}>Show More</button></div>
                 <div className="" onClick={handleCart}>   <button className="bg-gray-500 rounded-lg p-1 text-white" >Add to Cart</button></div>

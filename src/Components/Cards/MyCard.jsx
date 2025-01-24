@@ -14,11 +14,13 @@ const MyCard=({data})=>{
         const dataList={
             productId:id,
             category:category,
-            price:price,
+            price:price*100,
             title:title,
             image:image,
             rating:rating.rate,
-            ratingC:rating.count
+            ratingC:rating.count,
+            quantity:1,
+         
         }
 
         try{
@@ -31,7 +33,7 @@ const MyCard=({data})=>{
     }
     
     return(
-        <div className=" border-2 relative border-transparent shadow-xl hover:shadow-2xl hover: rounded-2xl flex justify-evenly  p-1 py-2  m-10 cursor-pointer ">
+        <div className=" border-2 relative border-transparent shadow-xl hover:shadow-2xl hover: rounded-2xl flex justify-evenly  p-1 py-2  m-2 cursor-pointer ">
 
             <div className=" h-[250px] flex items-center">
             <img className="rounded-xl h-[220px] w-[200px]" src={image}/>
@@ -41,7 +43,7 @@ const MyCard=({data})=>{
             <div className="w-[50%] flex flex-col relative top-10 ">
                 <h1 className="mx-auto mb-1 font-bold text-gray-700 text-sm ">{category}</h1>
                 <h1 className="overflow-hidden my-1  text-gray-600 text-[1rem] h-[50px]" >{title.length>60 ? title.slice(0,60)+"..." : title}</h1>
-                <h1 className="my-1 text-blue-700 text-bold text-xl">₹ {price}</h1>
+                <h1 className="my-1 text-blue-700 text-bold text-xl">₹ {(price*100).toFixed(2)}</h1>
                 <div className="absolute top-[140px] flex justify-evenly w-full">
                     <button className="bg-blue-600 rounded-lg  p-1 text-white px-4" onClick={()=>navigate(`/show-more/${id}`)}>Show More</button>
                     <button className="bg-gray-600 rounded-lg p-1 text-white px-4" onClick={()=>handleCart()}>Add to Cart</button>
