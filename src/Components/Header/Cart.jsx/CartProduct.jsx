@@ -68,7 +68,7 @@ const CartProduct=({data,getData})=>{
                         <div className="border-b  border-gray-300 pb-4 mb-4 my-6"> <button className="bg-gray-300 rounded-lg p-1 px-3 text-[0.9rem] font-bold ">{rating}⭐️ | {ratingC}</button></div>
                         <div className="text-[1.4rem]  font-bold my-6 flex gap-4 "><span><img src={minus} className="w-8" onClick={()=>decreaseCount()}/> </span>{quantity}<img src={plus} className="w-8" onClick={()=>setQuantity(quantity+1)}/></div>
                         <div className="text-[1rem]  font-bold my-2">₹ {(((price*100))*quantity).toFixed(2)}</div>
-                        <div className="flex gap-16 items-center my-8"><div className="">   <button className="bg-gray-600 text-lg rounded-lg p-2 px-36 text-white hover:bg-blue-600 " onClick={()=>navigate("/checkout")}>Check out</button></div>
+                        <div className="flex gap-16 items-center my-8">
                         <div onClick={handleDelete} className="cursor-pointer"><img  src={DeletePic} className="w-12"/></div></div>
                     </div>
                     
