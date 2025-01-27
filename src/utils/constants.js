@@ -21,3 +21,6 @@ export const HomeL=
 
 export const singleProduct=
 "https://fakestoreapi.com/products/";
+
+export const Debitcard=
+"https://t3.ftcdn.net/jpg/05/89/45/84/360_F_589458438_NjcRmqJWjA2Jk2YlMY2k5jKB4iCdRkAn.jpg";

@@ -12,6 +12,12 @@ import SearchProducts from "./SearchPage/SearchProducts";
 import WishListC from "./Header/WishList/WishListC";
 import CartC from "./Header/Cart.jsx/CartC";
 import PageNotFound from "./ErrorContent/PageNotFound";
+import Checkout from "./Checkout/Checkout";
+import ShippingDetails from "./Checkout/ShippingDetails";
+import NetBanking from "./Checkout/NetBanking";
+import CreditCard from "./Checkout/CreditCard";
+import COD from "./Checkout/COD";
+
 
 const Body=()=>{
     const {id}=useParams();
@@ -37,8 +43,12 @@ const Body=()=>{
                 <Route path="/search" element={<SearchProducts/>}/>
                 <Route path="/wishlist" element={<WishListC/>}/>
                 <Route path="/cart" element={<CartC/>}/>
+                <Route path="/checkout" element={<ShippingDetails/>}/>
+                <Route path="/checkout/payU" element={<Checkout/>}/>
+                <Route path="/checkout/payUN" element={<NetBanking/>}/>
+                <Route path="/checkout/payUC" element={<CreditCard/>}/>
+                <Route path="/checkout/payUD" element={<COD/>}/>
                 <Route path="/*" element={<PageNotFound/>}/>
-
             </Routes>
             <Footerlist/>
             </Router>
