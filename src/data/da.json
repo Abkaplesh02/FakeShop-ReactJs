@@ -2,6 +2,7 @@
   "wishlist": [],
   "cart": [
     {
+<<<<<<< HEAD
       "id": "6cb2",
       "productId": 2,
       "category": "men's clothing",
@@ -11,6 +12,17 @@
       "rating": 4.1,
       "ratingC": 259,
       "quantity": 2
+=======
+      "id": "0543",
+      "productId": 4,
+      "category": "men's clothing",
+      "price": 1599,
+      "title": "Mens Casual Slim Fit",
+      "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg",
+      "rating": 2.1,
+      "ratingC": 430,
+      "quantity": 1
+>>>>>>> 9abd60d (update redux page)
     }
   ]
 }
