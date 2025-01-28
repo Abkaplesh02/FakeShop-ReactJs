@@ -18,7 +18,7 @@ const CreditCard=()=>{
     return(
         <div className="mt-[160px]">
             <div className="w-4/12 mx-auto bg-blue-600 py-4 text-[1.5rem] font-bold text-white flex justify-center mb-12 border-2 border-blue-500">
-             FakeShop PaymentU
+             FakeShop PaymentU Reciept
            </div>
         <form className="w-4/12 mx-auto " onSubmit={handleSubmit}>
             <div className="flex my-12 items-center">
