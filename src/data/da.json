@@ -25,36 +25,6 @@
   ],
   "cart": [
     {
-<<<<<<< HEAD
-<<<<<<< HEAD
-      "id": "6cb2",
-      "productId": 2,
-      "category": "men's clothing",
-      "price": 2230,
-      "title": "Mens Casual Premium Slim Fit T-Shirts ",
-      "image": "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
-      "rating": 4.1,
-      "ratingC": 259,
-      "quantity": 2
-=======
-      "id": "0543",
-      "productId": 4,
-=======
-      "id": "5cca",
-      "productId": 2,
->>>>>>> 4babffe (update project)
-      "category": "men's clothing",
-      "price": 2230,
-      "title": "Mens Casual Premium Slim Fit T-Shirts ",
-      "image": "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
-      "rating": 4.1,
-      "ratingC": 259,
-      "quantity": 1
-<<<<<<< HEAD
->>>>>>> 9abd60d (update redux page)
-=======
-    },
-    {
       "id": "c235",
       "productId": 11,
       "category": "electronics",
@@ -86,7 +56,6 @@
       "rating": 2.2,
       "ratingC": 140,
       "quantity": 3
->>>>>>> 4babffe (update project)
     }
   ]
 }
