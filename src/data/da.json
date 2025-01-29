@@ -21,23 +21,43 @@
       "rating": 2.9,
       "ratingC": 250,
       "quantity": 1
-    }
-  ],
-  "cart": [
+    },
     {
-      "id": "c235",
-      "productId": 11,
-      "category": "electronics",
-      "price": 10900,
-      "title": "Silicon Power 256GB SSD 3D NAND A55 SLC Cache Performance Boost SATA III 2.5",
-      "image": "https://fakestoreapi.com/img/71kWymZ+c+L._AC_SX679_.jpg",
-      "rating": 4.8,
-      "ratingC": 319,
+      "id": "13f6",
+      "productId": "2",
+      "category": "men's clothing",
+      "price": 2230,
+      "title": "Mens Casual Premium Slim Fit T-Shirts ",
+      "image": "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
+      "rating": 4.1,
+      "ratingC": 259,
       "quantity": 1
     },
     {
-      "id": "16e1",
-      "productId": 13,
+      "id": "9989",
+      "productId": "9",
+      "category": "electronics",
+      "price": 6400,
+      "title": "WD 2TB Elements Portable External Hard Drive - USB 3.0 ",
+      "image": "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg",
+      "rating": 3.3,
+      "ratingC": 203,
+      "quantity": 1
+    },
+    {
+      "id": "7592",
+      "productId": "10",
+      "category": "electronics",
+      "price": 10900,
+      "title": "SanDisk SSD PLUS 1TB Internal SSD - SATA III 6 Gb/s",
+      "image": "https://fakestoreapi.com/img/61U7T1koQqL._AC_SX679_.jpg",
+      "rating": 2.9,
+      "ratingC": 470,
+      "quantity": 1
+    },
+    {
+      "id": "141b",
+      "productId": "13",
       "category": "electronics",
       "price": 59900,
       "title": "Acer SB220Q bi 21.5 inches Full HD (1920 x 1080) IPS Ultra-Thin",
@@ -45,17 +65,41 @@
       "rating": 2.9,
       "ratingC": 250,
       "quantity": 1
+    }
+  ],
+  "cart": [
+    {
+      "id": "ff00",
+      "productId": 5,
+      "category": "jewelery",
+      "price": 69500,
+      "title": "John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet",
+      "image": "https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg",
+      "rating": 4.6,
+      "ratingC": 400,
+      "quantity": 1
     },
     {
-      "id": "f22a",
-      "productId": 14,
-      "category": "electronics",
-      "price": 99999,
-      "title": "Samsung 49-Inch CHG90 144Hz Curved Gaming Monitor (LC49HG90DMNXZA) – Super Ultrawide Screen QLED ",
-      "image": "https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg",
-      "rating": 2.2,
-      "ratingC": 140,
-      "quantity": 3
+      "id": "6dfb",
+      "productId": 8,
+      "category": "jewelery",
+      "price": 1099,
+      "title": "Pierced Owl Rose Gold Plated Stainless Steel Double",
+      "image": "https://fakestoreapi.com/img/51UDEzMJVpL._AC_UL640_QL65_ML3_.jpg",
+      "rating": 1.9,
+      "ratingC": 100,
+      "quantity": 1
+    },
+    {
+      "id": "f9ce",
+      "productId": 7,
+      "category": "jewelery",
+      "price": 999,
+      "title": "White Gold Plated Princess",
+      "image": "https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_.jpg",
+      "rating": 3,
+      "ratingC": 400,
+      "quantity": 1
     }
   ]
 }
