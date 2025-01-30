@@ -1,11 +1,15 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Debitcard } from "../../utils/constants";
 
 const ShippingDetails=()=>{
+    const location=useLocation();
+    const {total,totalQ,data}=location.state;
     const navigate=useNavigate();
     const handleSumbit=(e)=>{
         e.preventDefault();
-        navigate("/checkout/payU")
+        navigate(`/checkout/payU`,{state: {total,totalQ,data}});
+        
+
     }
  
     return (

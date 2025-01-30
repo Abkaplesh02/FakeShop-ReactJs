@@ -10,7 +10,7 @@ const WishListC=()=>{
 
     const getData=async()=>{
         const response=await axios.get("http://localhost:3000/wishlist")
-        setData(response.data);z
+        setData(response.data);
         window.scrollTo(0,0);
     }
 

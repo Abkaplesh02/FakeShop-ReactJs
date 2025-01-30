@@ -4,6 +4,8 @@ import axios from "axios";
 import { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addToWishList, clearWishList, removeFromWishList } from "../../../redux/wishListSlice";
 
 
 const WishProduct=({data,getData})=>{
@@ -11,6 +13,7 @@ const WishProduct=({data,getData})=>{
     const successNotify=()=>toast("Item added !" , { autoClose: 2000 });
     const failureNotify=()=>toast("Error ! Try again" , { autoClose: 2000 })
     const successD=()=>toast("Deleted !!", { autoClose: 2000 })
+    const dispatch=useDispatch();
 
 
     if(data==null){
@@ -32,6 +35,7 @@ const WishProduct=({data,getData})=>{
         try{
             const response=await axios.post("http://localhost:3000/cart",dataSend);
             getData();
+            dispatch(addToWishList(dataSend))
             successNotify();
         }
         catch{
@@ -43,12 +47,14 @@ const WishProduct=({data,getData})=>{
         try{
             const response=await axios.delete(`http://localhost:3000/wishlist/${id}`)
             getData();
+            dispatch(removeFromWishList({productId}));
             successD();
            
         }
         catch{
             failureNotify();
         }
+      
     }
     
     return (

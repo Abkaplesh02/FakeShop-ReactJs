@@ -1,19 +1,26 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Debitcard } from "../../utils/constants";
 import { toast, ToastContainer } from "react-toastify";
 import { useRef, useState } from "react";
 import { validateDebitCard } from "../../utils/validateDebitCart";
+import "./toastfile.css"
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { clearCart } from "../../redux/cartSlice";
 
 const CreditCard=()=>{
 
     const navigate=useNavigate();
+    const dispatch=useDispatch();
     const card=useRef();
     const cvv=useRef();
+    const location=useLocation();
+    const {total,totalQ,data}=location.state;
     
 
     const [state,setState]=useState(false);
-    const success=()=>toast.success("Payment Success, Order Placed",{ autoClose: 2000 });
-    const handleSubmit=(e)=>{
+    const success=()=>toast("Payment Success, Order Placed 🎉",{ autoClose: 2000 });
+    const handleSubmit=async(e)=>{
         e.preventDefault();
         const message=validateDebitCard({CardDetails: card.current.value,cvv:cvv.current.value});
         
@@ -30,9 +37,12 @@ const CreditCard=()=>{
         else{
             card.current.setCustomValidity("");
             success();
-        setTimeout(()=>{
+
+            const response=await Promise.all(data.map((item)=>axios.delete(`http://localhost:3000/cart/${item.id}`)));
+            dispatch(clearCart());
+            setTimeout(()=>{
             navigate("/")
-        },2200)
+        },10200)
         }
     }
 
@@ -48,6 +58,12 @@ const CreditCard=()=>{
             <div className="w-4/12 mx-auto bg-blue-600 py-4 text-[1.5rem] font-bold text-white flex justify-center mb-12 border-2 border-blue-500">
              FakeShop PaymentU Reciept
            </div>
+
+           <div className="flex  border-2 border-gray-200 w-4/12 mx-auto gap-20 p-4 shadow-lg hover:shadow-2xl my-12 items-center ">
+        
+        <span className="text-2xl text-gray-700 font-bold">  Subtotal ({totalQ} items ) : </span> <span className="text-2xl text-blue-700 font-bold">  ₹ {total.toFixed(0)}</span>
+     </div>
+          
         <form className="w-4/12 mx-auto " onSubmit={handleSubmit}>
             <div className="flex my-12 items-center">
                 <div className=" text-gray-600 text-lg font-bold font-sans w-[150px]">Card Type</div><div className="flex items-center gap-10"><input onChange={()=>setState(!state)} type="radio" required /><img className="w-40" src={Debitcard} /></div>
@@ -70,7 +86,10 @@ const CreditCard=()=>{
 
             <button className={`py-3 px-6 font-bold rounded-xl mx-auto bg-blue-400 ${state? `hover:bg-blue-600` : ``}  text-white text-lg flex justify-center `} disabled={!state}>Pay Now</button>
         </form>
-        <ToastContainer position="top-right"/>
+        <ToastContainer position="top-center" 
+                toastClassName="toast-custom"
+                bodyClassName="toast-body-custom"
+                closeButtonClassName="toast-close-custom"/>
         </div>
     )
 }

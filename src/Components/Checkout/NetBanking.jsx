@@ -1,13 +1,18 @@
 import { toast, ToastContainer } from "react-toastify";
 import { Debitcard } from "../../utils/constants";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { clearCart } from "../../redux/cartSlice";
 
 const NetBanking=()=>{
     const navigate=useNavigate();
+    const dispatch=useDispatch();
+    const location=useLocation();
     const success=()=>toast.success("Payment Success, Order Placed",{ autoClose: 2000 });
     const handlePay=(e)=>{
         e.preventDefault();
         success();
+        dispatch(clearCart());
         setTimeout(()=>{
             navigate("/");
         },2200)

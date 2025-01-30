@@ -11,6 +11,7 @@ import HomeLiving from '../HeaderLists/HomeLiving';
 import BeautyList from '../HeaderLists/BeautyList';
 import Studio from '../HeaderLists/Studio';
 import { useNavigate } from 'react-router-dom';
+import Profile from '../HeaderLists/Profile';
 
 const Header=()=>{
 
@@ -20,6 +21,7 @@ const Header=()=>{
     const [homeState,setHomeState]=useState(false);
     const [beautyState,setBeautyState]=useState(false);
     const [studioState,setStudioState]=useState(false);
+    const [profileState,setProfileState]=useState(false);
     const navigate=useNavigate();
     const input=useRef();
     const [search,setSearch]=useState('');
@@ -58,6 +60,7 @@ const Header=()=>{
             {homeState && <HomeLiving setHomeState={setHomeState}/>}
             {beautyState && <BeautyList setBeautyState={setBeautyState}/>}
             {studioState && <Studio setStudioState={setStudioState}/>}
+            
 
 
 
@@ -70,7 +73,7 @@ const Header=()=>{
             <div className='flex justify-evenly w-2/12'> 
 
             
-            <div className='flex flex-col items-center justify-center cursor-pointer '>
+            <div className='flex flex-col items-center justify-center cursor-pointer '  onMouseEnter={()=>setProfileState(true)}  onMouseLeave={()=>setProfileState(false)}>
                 <img src={MyPerson} className='w-6 mb-2' />
                 <h1 className='text-xs text-[#282c3f] font-bold font-sans'>Profile</h1>
             </div>
@@ -83,6 +86,9 @@ const Header=()=>{
                 <h1 className='text-xs text-[#282c3f] font-bold font-sans' >Cart</h1>
             </div>
 
+            {
+                profileState && <Profile setProfileState={setProfileState}/>
+            }
             </div>
 
         </div>

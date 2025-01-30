@@ -17,6 +17,7 @@ import ShippingDetails from "./Checkout/ShippingDetails";
 import NetBanking from "./Checkout/NetBanking";
 import CreditCard from "./Checkout/CreditCard";
 import COD from "./Checkout/COD";
+import Register from "./Login/Register/Register";
 
 
 const Body=()=>{
@@ -37,6 +38,7 @@ const Body=()=>{
                     <CardContainer/>
                     </>       
                 }/>
+                <Route path="/register" element={<Register/>}/>
                 <Route path="/show-more/:id" element={<ShowMore/>}/>
                 <Route path="/products/:id" element={<ProductPage/>}/>
                 <Route path="/items" element={<HLProducts/>}/>

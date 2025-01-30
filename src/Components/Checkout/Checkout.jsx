@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import PaymentInfo from "./PaymentInfo";
 import ShippingDetails from "./ShippingDetails";
 import { useRef, useState } from "react";
@@ -8,15 +8,17 @@ import { useRef, useState } from "react";
 const Checkout=()=>{
     const navigate=useNavigate();
     const [selected,setSelected]=useState();
+    const location=useLocation();
+    const {total,totalQ,data}=location.state;
     const CheckMethod=()=>{
        if(selected=="COD"){
         navigate("/checkout/payUD")
        }
        if(selected=="CARD"){
-        navigate("/checkout/payUC")
+        navigate(`/checkout/payUC`,{state :{ total,totalQ,data}});
        }
        if(selected=="NET"){
-        navigate("/checkout/payUN")
+        navigate(`/checkout/payUN`,{state:{total,totalQ,data}})
        }
     }
     

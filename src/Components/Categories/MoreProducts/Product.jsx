@@ -1,12 +1,15 @@
 import axios from "axios";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
+import { addToCart } from "../../../redux/cartSlice";
 
 const Product=({data})=>{
     const successNotify=()=>toast("Sucess! Added to Cart", { autoClose: 2000 });
     const faileNotify=()=>toast.error("Failed! Some Erro", { autoClose: 2000 })
     const {title,price,rating,image,description,id,category}=data;
     const navigate=useNavigate();
+    const dispatch=useDispatch();
 
    
     const handleCart=async()=>{
@@ -24,6 +27,7 @@ const Product=({data})=>{
 
         try{
             const response=await axios.post("http://localhost:3000/cart",dataList);
+            dispatch(addToCart(dataList));
             successNotify();
             
         }

@@ -1,4 +1,3 @@
-import { fetchData } from "../../../utils/fetchData";
 import ContainerShimmer from "../../Shimmer/ContainerShimmer";
 import DeletePic from "../../../assets/delete.png";
 import { useEffect, useState } from "react";
@@ -7,10 +6,13 @@ import minus from "../../../assets/minus .png"
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { removeFromCart, updateCart } from "../../../redux/cartSlice";
 
 const CartProduct=({data,getData})=>{
 
     const [count,setCount]=useState(1);
+    const dispatch=useDispatch();
     const navigate=useNavigate();
     const deleteNotify=()=>toast.success("Item deleted!",{ autoClose: 2000 });
     
@@ -32,6 +34,7 @@ const CartProduct=({data,getData})=>{
     const setQuantity=async(num)=>{
         const response =await axios.patch(`http://localhost:3000/cart/${id}`,{quantity:num});
         getData();
+        dispatch(updateCart({productId,num}))
     }
 
     useEffect(()=>{
@@ -44,6 +47,7 @@ const CartProduct=({data,getData})=>{
 
 
             const response = await axios.delete(`http://localhost:3000/cart/${id}`);
+            dispatch(removeFromCart({productId}));
             deleteNotify();
             getData();
         }

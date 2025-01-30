@@ -9,6 +9,9 @@ import axios from "axios";
 import { singleProduct } from "../../utils/constants";
 import { toast, ToastContainer } from "react-toastify";
 import ContainerShimmer from "../Shimmer/ContainerShimmer";
+import { useDispatch } from "react-redux";
+import { addToWishList } from "../../redux/wishListSlice";
+import { addToCart } from "../../redux/cartSlice";
 
 const ShowMore=()=>{
 
@@ -16,6 +19,7 @@ const ShowMore=()=>{
     const {id}=useParams();
     const successNotify=()=>toast("Success! Item added ", { autoClose: 2000 })
     const FailureNotify=()=>toast.error("Failed! try again", { autoClose: 2000 })
+    const dispatch=useDispatch();
 
     useEffect(()=>{
      fetchData();   
@@ -64,6 +68,7 @@ const ShowMore=()=>{
        
         try{
             const response = await axios.post("http://localhost:3000/cart",dataList);
+            dispatch(addToCart(dataList));
             successNotify();
         }
         catch{
@@ -74,6 +79,7 @@ const ShowMore=()=>{
     const handleWishList=async()=>{
         try{
             const response = await axios.post("http://localhost:3000/wishlist",dataList);
+            dispatch(addToWishList(dataList))
             successNotify();
         }
         catch{
