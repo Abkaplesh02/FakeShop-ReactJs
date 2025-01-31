@@ -2,7 +2,6 @@ import MyPic from "../../../assets/Rating.png"
 import mockData from "../../../utils/UserReviewMockData"
 import Comment from "./Comments";
 const Rating=({Rdata})=>{
-    console.log(Rdata)
 const {rating}=Rdata;
     
 

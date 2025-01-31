@@ -11,7 +11,20 @@ const userSlice=createSlice({
         },
         removeUser:(state)=>{
              state.user=null;
+        },
+        updateUserCart:(state,action)=>{
+            state.user.cart.push(action.payload);
+        },
+        updateUserWishlist:(state,action)=>{
+            state.user.wishList.push(action.payload);
+        },
+        removeFromCart:(state,action)=>{
+
+        },
+        removeFromWishList:(state,action)=>{
+            
         }
+
     }
 })
 

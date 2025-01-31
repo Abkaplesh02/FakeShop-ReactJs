@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate} from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import { addToCart } from "../../redux/cartSlice";
@@ -11,6 +11,7 @@ const MyCard=({data})=>{
     const {category,price,title,image,description,rating,id}=data;
     const navigate=useNavigate();
     const dispatch=useDispatch();
+    const userSelect=useSelector((store)=>store.user.user);
 
    
     const handleCart=async()=>{
@@ -24,6 +25,9 @@ const MyCard=({data})=>{
             rating:rating.rate,
             ratingC:rating.count,
             quantity:1
+        }
+        if(userSelect){
+            
         }
 
         try{

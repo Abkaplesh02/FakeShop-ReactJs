@@ -30,7 +30,6 @@ const ShowMore=()=>{
     }
 
     const fetchData=()=>{
-        console.log(singleProduct+id)
         axios
     .get(`${singleProduct}${id}`)
     .then((response)=>{

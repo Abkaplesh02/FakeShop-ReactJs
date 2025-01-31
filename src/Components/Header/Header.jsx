@@ -12,6 +12,7 @@ import BeautyList from '../HeaderLists/BeautyList';
 import Studio from '../HeaderLists/Studio';
 import { useNavigate } from 'react-router-dom';
 import Profile from '../HeaderLists/Profile';
+import { useSelector } from 'react-redux';
 
 const Header=()=>{
 
@@ -25,7 +26,7 @@ const Header=()=>{
     const navigate=useNavigate();
     const input=useRef();
     const [search,setSearch]=useState('');
-
+    const userSelect=useSelector((store)=>store.user.user);
 
 
     const list=["men's clothing","women's clothing","KIDS","electronics","jewelery",]
@@ -75,7 +76,7 @@ const Header=()=>{
             
             <div className='flex flex-col items-center justify-center cursor-pointer '  onMouseEnter={()=>setProfileState(true)}  onMouseLeave={()=>setProfileState(false)}>
                 <img src={MyPerson} className='w-6 mb-2' />
-                <h1 className='text-xs text-[#282c3f] font-bold font-sans'>Profile</h1>
+                <h1 className='text-xs text-[#282c3f] font-bold font-sans'>{(userSelect)?userSelect.name:"Profile"}</h1>
             </div>
             <div className='flex flex-col items-center justify-center cursor-pointer ' onClick={()=>navigate("/wishlist")}>
                 <img src={MyWish} className='w-6 mb-2' />

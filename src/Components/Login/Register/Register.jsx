@@ -2,25 +2,48 @@ import { useRef, useState } from "react";
 import { validateRegister } from "../../../utils/validateRegister";
 import { useDispatch } from "react-redux";
 import { addToUser, removeUser } from "../../../redux/userSlice";
+import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 
 const Register=()=>{
     const [isLogin,setIsLogin]=useState(false);
+    const [message,setMessage]=useState(null);
     const name=useRef();
     const email=useRef();
     const password=useRef();
     const mobile=useRef();
     const formr=useRef();
+    const navigate=useNavigate();
     const dispatch=useDispatch();
 
+    const handleLogin=()=>{
+        setIsLogin(!isLogin);
+        setMessage(null);
+        
+    }
     
-    
-    const handleSubmit=(e)=>{
+    const handleSubmit=async(e)=>{
         e.preventDefault();
         const message=validateRegister(email.current.value,password.current.value);
-        console.log(message)
+        setMessage(message);
+        
+        if(isLogin){
+            try{
+                const check=await axios.get(`http://localhost:3000/users/${email.current.value}`);
+                dispatch(addToUser(check.data));
+                formr.current.reset();
+                navigate("/");
+            }
+            catch(error){
+                setMessage(error+" "+ error.message);
+            }
+            return;
+        }
+
         const userInfo={
-            userId:email.current.value,
+            id:email.current.value,
             name:name.current.value,
             email:email.current.value,
             password:password.current.value,
@@ -28,27 +51,32 @@ const Register=()=>{
             cart:[],
             wishList:[],
         }
-        if(message){
-            if(message.includes("email")){
-                email.current.setCustomValidity(message);
-                email.current.reportValidity();
+       
+        if(!message){ 
+            try{  
+                const check=await axios.get(`http://localhost:3000/users/${email.current.value}`);
+                if(check.data){
+                    setMessage("User already exist !!!  Please proceed to login page");
+                    toast.error("User already exist !!!  Please proceed to login page")
+                    return;
+                }
             }
-            else if(message.includes("Pass")){
-                password.current.setCustomValidity(message);
-                password.current.reportValidity();
-            }
-            return;
-        }
-        else{
+                 catch(error){
+                    try{
+
+                        const response=await axios.post("http://localhost:3000/users",userInfo);
+                        toast("User created success");
+                        formr.current.reset();
+                        setIsLogin(!isLogin);
+                    }
             
-            email.current.setCustomValidity("");
-            password.current.setCustomValidity("");
-            dispatch(addToUser(userInfo));
-            dispatch(removeUser())
-            formr.current.reset();
+            catch(error){
+                setMessage(error + " " + error.message);
+                toast.error("user not created")
+            }
         }
     }
-
+}
     return (
         <div className="mt-40">
 <div className="w-4/12 mx-auto bg-blue-600 py-4 text-[1.5rem] font-bold text-white flex justify-center  border-2 border-blue-500 ">
@@ -65,7 +93,7 @@ const Register=()=>{
             }
 
             <div className="flex my-12 items-center ">
-                <span className="w-4/12 text-gray-600 text-lg font-bold font-sans">Email</span><input onChange={()=>email.current.setCustomValidity("")} ref={email} type="email" className="border-[2px] p-4 pl-4 w-full border-gray-300" required placeholder="Email"/>
+                <span className="w-4/12 text-gray-600 text-lg font-bold font-sans">Email</span><input ref={email} type="email" className="border-[2px] p-4 pl-4 w-full border-gray-300" required placeholder="Email"/>
             </div>
 
            {
@@ -75,16 +103,21 @@ const Register=()=>{
            }
 
             <div className="flex my-12 items-center ">
-                <span className="w-4/12 text-gray-600 text-lg font-bold font-sans">Password</span><input onChange={()=>password.current.setCustomValidity("")} ref={password} type="password" className="border-[2px] p-4 pl-4 w-full border-gray-300" required placeholder="Password"/>
+                <span className="w-4/12 text-gray-600 text-lg font-bold font-sans">Password</span><input ref={password} type="password" className="border-[2px] p-4 pl-4 w-full border-gray-300" required placeholder="Password"/>
             </div>
 
             <div className="flex my-12 items-center ">
-                <span className="w-7/12 text-blue-500 text-xl font-bold font-sans cursor-pointer" onClick={()=>setIsLogin(!isLogin)}>{isLogin ? "New User? Register" : "Already a user? Sign in"}</span>
+                <span className="w-10/12 text-red-600 text-2xl font-bold font-sans cursor-pointer" >{message}</span>
+            </div>
+
+            <div className="flex my-12 items-center ">
+                <span className="w-7/12 text-blue-500 text-xl font-bold font-sans cursor-pointer" onClick={()=>handleLogin()}>{isLogin ? "New User? Register" : "Already a user? Sign in"}</span>
             </div>
            
 
             <button className="py-3 px-6 font-bold rounded-xl mx-auto bg-blue-600 mb-4  text-white text-lg flex justify-center ">{!isLogin ? "Register" : "Login"}</button>
         </form>
+        <ToastContainer position="top-right"/>
        
         </div>
     )
