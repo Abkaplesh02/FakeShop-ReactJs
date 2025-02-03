@@ -4,13 +4,15 @@ import { useEffect, useState } from "react";
 import ContainerShimmer from "../../Shimmer/ContainerShimmer";
 import axios from "axios";
 import NoDataFound from "../../Shimmer/NoDataFound";
+import { useSelector } from "react-redux";
 
 const WishListC=()=>{
     const [data,setData]=useState(null);
+    const select=useSelector((store)=>store.user.user);
 
     const getData=async()=>{
-        const response=await axios.get("http://localhost:3000/wishlist")
-        setData(response.data);
+        const response=await axios.get(`http://localhost:3000/users/${select.id}`);
+        setData(response.data.wishList);
         window.scrollTo(0,0);
     }
 

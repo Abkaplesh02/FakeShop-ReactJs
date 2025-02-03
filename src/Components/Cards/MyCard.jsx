@@ -13,6 +13,7 @@ const MyCard=({data})=>{
     const dispatch=useDispatch();
     const userSelect=useSelector((store)=>store.user.user);
 
+
    
     const handleCart=async()=>{
 
@@ -27,17 +28,34 @@ const MyCard=({data})=>{
             quantity:1
         }
         if(userSelect){
-            
-        }
-
         try{
-            const response=await axios.post("http://localhost:3000/cart",dataList);
+            const response=await axios.get(`http://localhost:3000/users/${userSelect.id}`);
+            const userData=response.data;
+            console.log(userData.cart)
+            // Check if the item already exists in the cart
+            const existingItem=userData.cart.find(item=>item.productId===id);
+            let updatedCart;
+            if(existingItem){
+                updatedCart=userData.cart.map((item)=>item.productId===id? {...item,quantity:item.quantity+1}:item)
+            }
+            else{
+                updatedCart=[...userData.cart,dataList];
+            }
+            await axios.patch(`http://localhost:3000/users/${userSelect.id}`, {cart:updatedCart});
             dispatch(addToCart(dataList));
             successNotify();
         }
-        catch{
+        catch(error){
+            console.log(error);
             faileNotify();
         }
+    }
+    else{
+        toast("Please add your account first!!!" , {autoClose:1300});
+        setTimeout(()=>{
+            navigate("/register")
+        },1400);
+    }
     }
     
     return(

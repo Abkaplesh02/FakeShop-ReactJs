@@ -1,28 +1,36 @@
 import { toast, ToastContainer } from "react-toastify";
-import { Debitcard } from "../../utils/constants";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { clearCart } from "../../redux/cartSlice";
+import axios from "axios";
 
 const NetBanking=()=>{
     const navigate=useNavigate();
     const dispatch=useDispatch();
     const location=useLocation();
+    const select=useSelector((store)=>store.user.user);
     const success=()=>toast.success("Payment Success, Order Placed",{ autoClose: 2000 });
-    const handlePay=(e)=>{
+    const handlePay=async(e)=>{
         e.preventDefault();
-        success();
-        dispatch(clearCart());
-        setTimeout(()=>{
-            navigate("/");
-        },2200)
+        try{ 
+            const updatedCart=[];
+            await axios.patch(`http://localhost:3000/users/${select.id}`,{cart:updatedCart})
+            success();
+            dispatch(clearCart());
+            setTimeout(()=>{
+                navigate("/");
+            },2200)
+    }
+        catch(error){
+            console.error(error)
+        }
     }
     return (
         <div className="mt-[160px]" >
                     <div className="w-4/12 mx-auto bg-blue-600 py-4 text-[1.5rem] font-bold text-white flex justify-center mb-12 border-2 border-blue-500">
                      FakeShop PaymentU
                    </div>
-                <form className="w-4/12 mx-auto " onSubmit={handlePay}>
+                <form className="w-4/12 mx-auto " onSubmit={(e)=>handlePay(e)}>
                    
                     <div className="flex my-12 items-center">
                         <span className="w-4/12 text-gray-600 text-lg font-bold font-sans">User Name</span><input type="text" className="border-[2px] p-4 pl-4 w-full border-gray-300" required placeholder="User name"/>

@@ -5,7 +5,7 @@ import { useRef, useState } from "react";
 import { validateDebitCard } from "../../utils/validateDebitCart";
 import "./toastfile.css"
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { clearCart } from "../../redux/cartSlice";
 
 const CreditCard=()=>{
@@ -16,6 +16,7 @@ const CreditCard=()=>{
     const cvv=useRef();
     const location=useLocation();
     const {total,totalQ,data}=location.state;
+    const selector=useSelector((store)=>store.user.user);
     
 
     const [state,setState]=useState(false);
@@ -37,12 +38,20 @@ const CreditCard=()=>{
         else{
             card.current.setCustomValidity("");
             success();
-
-            const response=await Promise.all(data.map((item)=>axios.delete(`http://localhost:3000/cart/${item.id}`)));
-            dispatch(clearCart());
+            try{
+                const resp=await axios.get(`http://localhost:3000/users/${selector.id}`);
+                const userData=resp.data;
+                const UpdatedCart=[];
+                await axios.patch(`http://localhost:3000/users/${selector.id}`,{cart:UpdatedCart});
+                dispatch(clearCart());
             setTimeout(()=>{
             navigate("/")
-        },10200)
+        },2000)
+            }
+            catch(error){
+
+            }
+            
         }
     }
 

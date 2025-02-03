@@ -1,6 +1,4 @@
 {
-  "wishlist": [],
-  "cart": [],
   "users": [
     {
       "id": "Abkaplesh02@gmail.com",
@@ -8,6 +6,15 @@
       "email": "Abkaplesh02@gmail.com",
       "password": "Abkaplesh9@",
       "mobile": "8699159612",
+      "cart": [],
+      "wishList": []
+    },
+    {
+      "id": "shubhu@gmail.com",
+      "name": "Shubham Shanker",
+      "email": "shubhu@gmail.com",
+      "password": "Abkaplesh9@",
+      "mobile": "1001",
       "cart": [],
       "wishList": []
     }

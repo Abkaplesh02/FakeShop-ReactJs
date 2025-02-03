@@ -5,6 +5,8 @@ import axios from "axios";
 import ContainerShimmer from "../../Shimmer/ContainerShimmer";
 import NoDataFound from "../../Shimmer/NoDataFound"
 import Subtotal from "./Subtotal";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -12,21 +14,28 @@ import Subtotal from "./Subtotal";
 const CartC=()=>{
 
     const [data,setData]=useState(null);
+    const useSelect=useSelector((store)=>store.user.user);
+    const navigate=useNavigate();
+
 
     useEffect(()=>{
         getData();
     },[]);
 
     const getData=async()=>{
-        const response=await axios.get("http://localhost:3000/cart");
-        setData(response.data);
+        const response=await axios.get(`http://localhost:3000/users/${useSelect.id}`);
+        setData(response.data.cart);
+        console.log(response.data.cart);
         // window.scrollTo(0,0);
     }
     if(data==null){
         return <ContainerShimmer/>
     }
 
+    console.log(data);
+
     let totalQ=data.reduce((previousValue,currentValue)=>(previousValue+(currentValue.quantity)),0);
+
 
     return (
         <div className="my-40">

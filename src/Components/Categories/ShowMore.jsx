@@ -3,15 +3,15 @@ import MyPic2 from "../../assets/wishlist.png"
 import SimilarProducts from "./MoreProducts/SimilarProducts";
 import Offer from "./Offer";
 import ProductDetails from "./ProductDetails";
-import { data, useParams } from "react-router-dom";
+import { data, useNavigate, useParams } from "react-router-dom";
 import DataLoading from "../ErrorContent/DataLoading";
 import axios from "axios";
 import { singleProduct } from "../../utils/constants";
 import { toast, ToastContainer } from "react-toastify";
 import ContainerShimmer from "../Shimmer/ContainerShimmer";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToWishList } from "../../redux/wishListSlice";
-import { addToCart } from "../../redux/cartSlice";
+import { addToCart, updateCart } from "../../redux/cartSlice";
 
 const ShowMore=()=>{
 
@@ -20,6 +20,8 @@ const ShowMore=()=>{
     const successNotify=()=>toast("Success! Item added ", { autoClose: 2000 })
     const FailureNotify=()=>toast.error("Failed! try again", { autoClose: 2000 })
     const dispatch=useDispatch();
+    const select=useSelector((store)=>store.user.user);
+    const navigate=useNavigate();
 
     useEffect(()=>{
      fetchData();   
@@ -51,8 +53,9 @@ const ShowMore=()=>{
 
     const {category,title,image,price,rating,description}=productData;
 
+
     const dataList={
-        productId:id,
+        productId:productData.id,
         category:category,
         price:price*100,
         title:title,
@@ -64,26 +67,62 @@ const ShowMore=()=>{
     }
 
     const handleCart=async()=>{
-       
+
+       if(select){
+
+      
         try{
-            const response = await axios.post("http://localhost:3000/cart",dataList);
+            const response = await axios.get(`http://localhost:3000/users/${select.id}`);
+            const userData=response.data;
+            console.log(userData)
+            const existingItem=userData.cart.find((item=>item.productId===productData.id))
+            let updatedCart;
+            if(existingItem){
+                updatedCart=userData.cart.map((item)=>item.productId===productData.id?{...item,quantity:item.quantity+1}:item)
+            }
+            else{
+
+                updatedCart=[...userData.cart,dataList];
+            }
+            await axios.patch(`http://localhost:3000/users/${select.id}`,{cart:updatedCart});
             dispatch(addToCart(dataList));
             successNotify();
         }
-        catch{
+        catch(error){
+            console.error(error);
             FailureNotify();
         }
     }
+    else{
+        toast("Please add your account first!!!" , {autoClose:1300});
+        setTimeout(()=>{
+            navigate("/register")
+        },1400);
+    }
+    }
 
     const handleWishList=async()=>{
+        if(select){
+      
         try{
-            const response = await axios.post("http://localhost:3000/wishlist",dataList);
+            const response = await axios.get(`http://localhost:3000/users/${select.id}`);
+            const userData=response.data;
+            const updatedWish=[...userData.wishList,dataList];
+            await axios.patch(`http://localhost:3000/users/${select.id}`,{wishList:updatedWish});
             dispatch(addToWishList(dataList))
             successNotify();
         }
-        catch{
+        catch(error){
+            console.error(error);
             FailureNotify();
-        }
+        }   
+    }
+    else{
+        toast("Please add your account first!!!" , {autoClose:1300});
+        setTimeout(()=>{
+            navigate("/register")
+        },1400);
+    }
     }
     
     return(

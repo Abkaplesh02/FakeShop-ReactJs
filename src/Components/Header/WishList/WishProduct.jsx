@@ -4,8 +4,9 @@ import axios from "axios";
 import { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToWishList, clearWishList, removeFromWishList } from "../../../redux/wishListSlice";
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const WishProduct=({data,getData})=>{
@@ -14,6 +15,7 @@ const WishProduct=({data,getData})=>{
     const failureNotify=()=>toast("Error ! Try again" , { autoClose: 2000 })
     const successD=()=>toast("Deleted !!", { autoClose: 2000 })
     const dispatch=useDispatch();
+    const select=useSelector((store)=>store.user.user);
 
 
     if(data==null){
@@ -23,7 +25,7 @@ const WishProduct=({data,getData})=>{
 
     const addToCart=async()=>{
         const dataSend={
-            productId:id,
+            productId:productId||id,
             title:title,
             category:category,
             image:image,
@@ -33,25 +35,41 @@ const WishProduct=({data,getData})=>{
             quantity:1
         };
         try{
-            const response=await axios.post("http://localhost:3000/cart",dataSend);
+            const response=await axios.get(`http://localhost:3000/users/${select.id}`);
+            const userData=response.data;
+            const existingItem=userData.cart.find((item=>item.productId===productId));
+            let updatedCart;
+            if(existingItem){
+                updatedCart=userData.cart.map((item)=>item.productId===productId?{...item,quantity:item.quantity+1}:item)
+            }
+            else{
+                updatedCart=[...userData.cart,dataSend]
+            }
+            
+            await axios.patch(`http://localhost:3000/users/${select.id}`,{cart:updatedCart})
             getData();
             dispatch(addToWishList(dataSend))
             successNotify();
         }
-        catch{
+        catch(error){
+            console.error(error);
             failureNotify();
         }
     }
 
     const handleDelete=async()=>{
         try{
-            const response=await axios.delete(`http://localhost:3000/wishlist/${id}`)
+            const response=await axios.get(`http://localhost:3000/users/${select.id}`);
+            const userData=response.data.wishList;
+            const updatedList=userData.filter((item)=>item.productId!==data.productId);
+            await axios.patch(`http://localhost:3000/users/${select.id}`,{wishList:updatedList});
             getData();
             dispatch(removeFromWishList({productId}));
             successD();
            
         }
-        catch{
+        catch(error){
+            console.error(error);
             failureNotify();
         }
       
@@ -73,7 +91,7 @@ const WishProduct=({data,getData})=>{
                 <div className="flex gap-16 items-center my-8"><div className="">   <button className="bg-gray-600 text-lg rounded-lg p-2 px-36 text-white hover:bg-blue-600" onClick={()=>addToCart()}>Add to Cart</button></div>
                 <div className="cursor-pointer" onClick={handleDelete} ><img src={DeletePic} className="w-12"/></div></div>
             </div>
-            <ToastContainer position="top-right"/>
+            <ToastContainer position="top-right" autoClose={2000}/>
         </div>
         </>
     )

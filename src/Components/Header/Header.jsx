@@ -23,6 +23,7 @@ const Header=()=>{
     const [beautyState,setBeautyState]=useState(false);
     const [studioState,setStudioState]=useState(false);
     const [profileState,setProfileState]=useState(false);
+    const select=useSelector((store)=>store.user.user);
     const navigate=useNavigate();
     const input=useRef();
     const [search,setSearch]=useState('');
@@ -74,18 +75,20 @@ const Header=()=>{
             <div className='flex justify-evenly w-2/12'> 
 
             
-            <div className='flex flex-col items-center justify-center cursor-pointer '  onMouseEnter={()=>setProfileState(true)}  onMouseLeave={()=>setProfileState(false)}>
+            <div className='flex flex-col items-center justify-center cursor-pointer ' onClick={()=>navigate("/register")} onMouseEnter={()=>setProfileState(true)}  onMouseLeave={()=>setProfileState(false)}>
                 <img src={MyPerson} className='w-6 mb-2' />
-                <h1 className='text-xs text-[#282c3f] font-bold font-sans'>{(userSelect)?userSelect.name:"Profile"}</h1>
+                <h1 className='text-xs text-[#282c3f] font-bold font-sans' >{(userSelect)?userSelect.name:"Profile"}</h1>
             </div>
-            <div className='flex flex-col items-center justify-center cursor-pointer ' onClick={()=>navigate("/wishlist")}>
+
+            { select && <div className='flex flex-col items-center justify-center cursor-pointer ' onClick={()=>navigate("/wishlist")}>
                 <img src={MyWish} className='w-6 mb-2' />
                 <h1 className='text-xs text-[#282c3f] font-bold font-sans' >Wishlist</h1>
-            </div>
-            <div className='flex flex-col items-center justify-center cursor-pointer ' onClick={()=>navigate("/cart")}>
+            </div> }
+
+            {select &&<div className='flex flex-col items-center justify-center cursor-pointer ' onClick={()=>navigate("/cart")}>
                 <img src={MyCart}  className='w-6 mb-2'/>
                 <h1 className='text-xs text-[#282c3f] font-bold font-sans' >Cart</h1>
-            </div>
+            </div>}
 
             {
                 profileState && <Profile setProfileState={setProfileState}/>

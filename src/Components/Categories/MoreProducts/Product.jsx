@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import { addToCart } from "../../../redux/cartSlice";
@@ -10,6 +10,7 @@ const Product=({data})=>{
     const {title,price,rating,image,description,id,category}=data;
     const navigate=useNavigate();
     const dispatch=useDispatch();
+    const select=useSelector((store)=>store.user.user);
 
    
     const handleCart=async()=>{
@@ -24,9 +25,24 @@ const Product=({data})=>{
             quantity:1,
             
         }
+        if(select){
+
+        
 
         try{
-            const response=await axios.post("http://localhost:3000/cart",dataList);
+            const response=await axios.get(`http://localhost:3000/users/${select.id}`);
+            const userData=response.data;
+
+            const existingItem=userData.cart.find((item=>item.productId===id));
+            let updatedCart;
+            if(existingItem){
+                updatedCart=userData.cart.map((item)=>item.productId===id? {...item,quantity:item.quantity+1}:item);
+            }
+            else{
+                updatedCart=[...userData.cart,dataList]
+            }
+   
+            await axios.patch(`http://localhost:3000/users/${select.id}`,{cart:updatedCart});
             dispatch(addToCart(dataList));
             successNotify();
             
@@ -34,6 +50,13 @@ const Product=({data})=>{
         catch{
             faileNotify();
         }
+    }
+    else{
+        toast("Please add your account first!!!" , {autoClose:1300});
+        setTimeout(()=>{
+            navigate("/register")
+        },1400);
+    }
     }
 
     return(

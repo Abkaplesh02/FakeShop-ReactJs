@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { validateRegister } from "../../../utils/validateRegister";
 import { useDispatch } from "react-redux";
 import { addToUser, removeUser } from "../../../redux/userSlice";
@@ -23,6 +23,11 @@ const Register=()=>{
         setMessage(null);
         
     }
+let counter=0;
+    useEffect(()=>{
+        window.scrollTo(0,0);
+        console.log(counter++);
+    });
     
     const handleSubmit=async(e)=>{
         e.preventDefault();
